@@ -14,6 +14,6 @@ No BPC, verificar idade ou deficiencia, impedimento de longo prazo, grupo famili
 
 ## Aposentadorias urbana, especial e transicoes
 
-Verificar nascimento, DER, CNIS, CTPS, contribuicoes, indicadores, marcos temporais, regra de transicao, PPP, LTCAT, agente nocivo, EPI e prova tecnica. Nao aplicar regra atual a fato pretérito sem confirmar o regime juridico do periodo.
+Verificar nascimento, DER, CNIS, CTPS, contribuicoes, indicadores, marcos temporais, regra de transicao, PPP, LTCAT, agente nocivo, EPI e prova tecnica. Nao aplicar regra atual a fato preterito sem confirmar o regime juridico do periodo.
 
 Em qualquer materia, separar requisito, prova efetiva, prova contraria, lacuna e diligencia antes de recomendar protocolo.

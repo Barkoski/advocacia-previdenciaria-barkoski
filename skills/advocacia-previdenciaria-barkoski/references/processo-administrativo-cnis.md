@@ -14,4 +14,4 @@ Nao atribuir significado a indicador sem fonte oficial efetivamente consultada. 
 
 ## Saida
 
-Entregar diagnostico administrativo, quadro CNIS/CTPS, pontos aproveitaveis, correcoes/provas necessarias, risco contrario e estrategia entre recurso, novo requerimento, justificação ou acao judicial.
+Entregar diagnostico administrativo, quadro CNIS/CTPS, pontos aproveitaveis, correcoes/provas necessarias, risco contrario e estrategia entre recurso, novo requerimento, justificacao administrativa ou acao judicial.

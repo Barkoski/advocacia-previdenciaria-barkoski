@@ -57,4 +57,4 @@ Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventari
 
 Escolher uma conclusao: `AJUIZAR AGORA`, `AJUIZAR COM RESSALVA`, `RECORRER ADMINISTRATIVAMENTE`, `FAZER NOVO REQUERIMENTO`, `DILIGENCIAR ANTES`, `REFORMULAR TESE`, `NAO AJUIZAR NO ESTADO ATUAL` ou `ORIENTAR/NEGOCIAR`.
 
-Analise e diagnostico podem sair em texto direto e sem acento apenas em rotulo tecnico. Peca, minuta e texto destinado aos autos saem sempre em norma culta, com acentuacao e ortografia corretas e estrutura forense.
+Sobre a forma da resposta: rotulo tecnico (`FATO COMPROVADO`, `DILIGENCIAR ANTES`, `PRAZO PENDENTE DE CONFERENCIA HUMANA`) fica em caixa alta e sem acento, como neste arquivo. Todo o restante — analise, diagnostico, revisao, peca e minuta — sai em portugues correto, com acentuacao e ortografia; peca e minuta seguem ainda a estrutura forense (enderecamento, qualificacao, fatos, fundamentos, pedidos).
