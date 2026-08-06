@@ -102,6 +102,26 @@ O Cowork instala por arquivo `.plugin`, que é um ZIP com o `.claude-plugin/plug
 
 Se a pasta `.claude-plugin` não aparecer na seleção, ative a exibição de itens ocultos — ela começa com ponto.
 
+## O que a skill precisa para funcionar de verdade
+
+A skill é texto — instruções, não código. Roda em qualquer Claude com acesso aos arquivos, sem instalar mais nada.
+
+**Só que processo previdenciário é PDF grande e escaneado**, e é aí que a coisa trava. Vale saber disto antes de concluir que "não funcionou":
+
+**Leitura de PDF.** Em teste com dois processos administrativos reais (543 e 133 páginas), a leitura nativa de PDF falhou por ausência de renderizador na máquina. As duas análises só saíram porque havia um **servidor MCP de PDF** disponível, oferecendo três coisas que se mostraram indispensáveis:
+
+- leitura por faixa de páginas, para navegar sem carregar o arquivo inteiro;
+- busca textual, para localizar o indeferimento, as exigências e o CNIS antes de ler;
+- renderização de página em imagem, para as páginas digitalizadas.
+
+Se a leitura nativa falhar no seu ambiente, é isso que resolve. O módulo `rag-local.md` instrui a procurar essa alternativa antes de declarar impossibilidade.
+
+**Conferência visual.** Para o advogado olhar uma página crítica com os próprios olhos — assinatura, carimbo, CTPS manuscrita —, um visualizador de PDF integrado ajuda. A skill oferece isso quando a página for decisiva.
+
+**OCR em volume.** Processo com centenas de páginas escaneadas pede OCR. Ferramenta local é preferível a serviço em nuvem: mantém os autos na máquina, o que atende à regra de sigilo do módulo `privacidade-e-sigilo.md`.
+
+**Nenhum outro plugin é necessário.** A skill não depende de conectores, integrações ou pacotes de outras áreas.
+
 ## Personalizar para o seu escritório
 
 A skill nasceu da prática de um escritório específico. Para adaptá-la à sua, **não é preciso editar código na mão** — o próprio Claude faz isso por entrevista.
