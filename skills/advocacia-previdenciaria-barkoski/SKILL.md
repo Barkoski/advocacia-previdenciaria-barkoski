@@ -19,6 +19,8 @@ Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minu
 1. Fixar identidade: parte, beneficio/especie, NB, DER, protocolo/processo, fase, pedido e arquivos. Segregar divergencia como `POSSIVEL DOCUMENTO ESTRANHO AO CASO`.
 2. Trabalhar apenas com material efetivamente disponivel. Rotular ponto relevante como `FATO COMPROVADO`, `ALEGACAO`, `INFERENCIA` ou `CONCLUSAO JURIDICA`.
 3. Usar o padrao de citacao do modulo [references/padrao-de-evidencia.md](references/padrao-de-evidencia.md). Marcar OCR ruim, pagina ausente e leitura parcial.
+3.1. Conferir a paginacao real do arquivo antes de citar qualquer pagina; nao confiar na contagem anunciada pelo ambiente ou pelo indice. Ausencia de texto extraido e pagina de imagem nao lida, nunca pagina vazia ou prova inexistente. Ver [references/rag-local.md](references/rag-local.md).
+3.2. Entregar a tabela de provas de [references/tabela-de-provas.md](references/tabela-de-provas.md) em toda analise de autos, com conteudo concreto, pagina, titular e marcacao de conferencia. Documento nao lido nao entra na tabela: entra em pendencias de leitura.
 4. Nunca inventar ou completar fatos, nomes, datas, periodos, valores, calculos, documentos, paginas, leis, temas, sumulas ou julgados. Usar `NAO E POSSIVEL CONFIRMAR COM O MATERIAL DISPONIVEL`.
 5. Tratar legislacao, regulamentacao e precedente atual como pendente ate consulta efetiva de fonte oficial. Se citar de memoria, rotular `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`.
 6. Antes de web, conector, Drive externo ou IA em nuvem, aplicar [references/privacidade-e-sigilo.md](references/privacidade-e-sigilo.md). Nao enviar dados de cliente ou autos para fora sem autorizacao expressa do advogado.
@@ -35,7 +37,8 @@ Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minu
 - Peticao, recurso, impugnacao ou PJe: [revisao-de-pecas-pje.md](references/revisao-de-pecas-pje.md).
 - Jurisprudencia ou legislacao: [jurisprudencia.md](references/jurisprudencia.md).
 - Conselho antes de protocolo: [conselho-pre-protocolar.md](references/conselho-pre-protocolar.md).
-- OCR, RAG ou acervo local: [rag-local.md](references/rag-local.md).
+- Documento digitalizado, OCR, RAG ou acervo local: [rag-local.md](references/rag-local.md).
+- Inventario de prova de qualquer caso com documento: [tabela-de-provas.md](references/tabela-de-provas.md).
 - Conteudo educativo: [conteudo-profissional.md](references/conteudo-profissional.md).
 
 Ler somente os modulos necessarios; combinar modulos quando a tarefa realmente atravessar fluxos.
@@ -53,7 +56,7 @@ Regras curtas que valem sempre:
 
 ## Entrega padrao
 
-Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventario/limites; cronologia; matriz requisito-prova-risco; prova favoravel e contraria; lacunas e diligencias; analise adversarial; decisao operacional; proxima acao; confianca justificada; e explicacao simples ao cliente quando util.
+Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventario/limites de leitura; cronologia; tabela de provas; matriz requisito-prova-risco; prova favoravel e contraria; lacunas e diligencias; analise adversarial; decisao operacional; proxima acao; confianca justificada; e explicacao simples ao cliente quando util.
 
 Escolher uma conclusao: `AJUIZAR AGORA`, `AJUIZAR COM RESSALVA`, `RECORRER ADMINISTRATIVAMENTE`, `FAZER NOVO REQUERIMENTO`, `DILIGENCIAR ANTES`, `REFORMULAR TESE`, `NAO AJUIZAR NO ESTADO ATUAL` ou `ORIENTAR/NEGOCIAR`.
 

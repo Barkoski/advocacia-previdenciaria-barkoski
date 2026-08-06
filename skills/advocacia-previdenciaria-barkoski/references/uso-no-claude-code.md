@@ -5,11 +5,14 @@ Traduz as travas do SKILL.md em regras de uso das ferramentas deste ambiente. Le
 ## Leitura de arquivo e PDF
 
 - Ler antes de concluir. Nao descrever conteudo de arquivo que nao foi aberto nesta conversa; nao inferir conteudo por nome de arquivo, pasta ou indice.
-- PDF: usar `Read` com o parametro `pages`. Acima de 10 paginas o recorte e obrigatorio, entao registrar quais faixas foram lidas e declarar `LEITURA PARCIAL` para o resto. Nunca tratar as paginas nao lidas como inexistentes.
-- Localizar antes de ler tudo: `Grep` para achar DER, NB, CPF, datas, nome de parte, "indefer", "exigencia", "CNIS"; `Glob` para mapear os arquivos do caso. Depois abrir as paginas relevantes e o entorno.
-- Citar sempre como o arquivo mostra: nome do arquivo + pagina do PDF (ou evento/ID do PJe quando existir). Se a pagina do PDF nao corresponder a numeracao dos autos, dizer as duas ou marcar `PAGINA NAO IDENTIFICADA`.
-- Documento escaneado: o texto pode vir de OCR ruim. Marcar `OCR DUVIDOSO` ou `ILEGIVEL` em vez de reconstruir. Para conferencia visual de pagina critica, oferecer a skill `pdf-viewer:view-pdf`.
-- Inventario primeiro. Antes da analise, listar arquivos, paginas e legibilidade, conforme [analise-de-caso.md](analise-de-caso.md).
+- **Comecar pelos metadados do PDF** para obter a contagem real de paginas. Nao adotar o numero anunciado pelo ambiente sem conferir: a divergencia e comum e ja apareceu em caso real. Registrar as duas contagens quando divergirem.
+- **Se a leitura nativa de PDF falhar** (renderizador ausente na maquina, arquivo grande demais), nao desistir nem concluir sem ler: usar servidor MCP de PDF disponivel, que costuma oferecer leitura por faixa de paginas, busca textual e renderizacao de pagina em imagem. Verificar o que esta disponivel antes de declarar impossibilidade.
+- **Diagnosticar a camada de texto** antes de qualquer conclusao, conforme [rag-local.md](rag-local.md): pagina com poucas dezenas de caracteres repetindo carimbo e pagina de imagem, nao pagina vazia.
+- **Mapear antes de ler em profundidade**: buscar o identificador de anexo no rodape para descobrir onde comeca cada documento, e buscar `INDEFER`, `EXIGENCIA`, `DESPACHO`, `ANALISE`, `CNIS`, `DER`, `AUTODECLARACAO`, `DESCRITIVO`. So depois abrir as faixas relevantes e o entorno.
+- Ler por faixa de paginas e registrar quais faixas foram lidas. Declarar `LEITURA PARCIAL` para o restante. Nunca tratar pagina nao lida como inexistente.
+- Citar sempre como o arquivo mostra: nome do arquivo + pagina (ou evento/ID do PJe quando existir). Se a numeracao do PDF divergir da dos autos, dizer as duas ou marcar `PAGINA NAO IDENTIFICADA`.
+- Pagina de imagem decisiva: renderizar e ler visualmente, ou encaminhar para OCR local. Marcar `OCR DUVIDOSO` ou `ILEGIVEL` em vez de reconstruir. Para conferencia visual pelo advogado, oferecer a skill `pdf-viewer:view-pdf`.
+- Inventario primeiro, conforme [analise-de-caso.md](analise-de-caso.md), e tabela de provas conforme [tabela-de-provas.md](tabela-de-provas.md).
 
 ## Acervos locais do escritorio
 
@@ -42,9 +45,13 @@ Aplicar [rag-local.md](rag-local.md) sempre que a origem for RAG, OCR ou busca s
 
 ## Auto-checagem antes de entregar
 
-1. Toda afirmacao factual tem arquivo e pagina, ou rotulo de `ALEGACAO`/`INFERENCIA`?
-2. Toda lei, sumula, tema ou julgado citado foi conferido em fonte, ou esta marcado `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`?
-3. Todo prazo mostra termo inicial, regra e fonte?
-4. Nenhum dado de cliente saiu para servico externo sem autorizacao expressa nesta conversa?
-5. A prova contraria e a melhor tese do INSS foram enfrentadas?
-6. Ha decisao operacional, proxima acao e limite de confianca?
+1. A contagem de paginas foi conferida no proprio arquivo, e a divergencia registrada se houver?
+2. Ficou declarado quais faixas foram lidas, quais sao imagem nao lida, e o que depende delas?
+3. Toda afirmacao factual tem arquivo e pagina, ou rotulo de `ALEGACAO`/`INFERENCIA`?
+4. A tabela de provas traz conteudo concreto, titular e coluna de conferencia preenchida?
+5. Toda lei, sumula, tema ou julgado citado foi conferido em fonte, ou esta marcado `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`?
+6. Todo prazo mostra termo inicial, regra e fonte?
+7. Os documentos internos do INSS foram confrontados entre si?
+8. Nenhum dado de cliente saiu para servico externo sem autorizacao expressa nesta conversa?
+9. A prova contraria e a melhor tese do INSS foram enfrentadas?
+10. Ha decisao operacional, proxima acao e limite de confianca?
