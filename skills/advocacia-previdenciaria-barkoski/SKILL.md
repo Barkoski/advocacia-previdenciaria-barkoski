@@ -3,7 +3,7 @@ name: advocacia-previdenciaria-barkoski
 description: Analise, estrategia, redacao e revisao de casos de Direito Previdenciario brasileiro, com rastreabilidade documental, cronologia, matriz requisito-prova-risco, analise adversarial e decisao operacional. Use ao ler autos, PDF de processo, peticao, laudo ou decisao; ao tratar de INSS, CNIS, CTPS, DER, NB, requerimento, exigencia, indeferimento, recurso administrativo, PJe, JEF; ao redigir ou revisar peca previdenciaria; e em aposentadorias (idade, tempo de contribuicao, especial, rural), BPC/LOAS, incapacidade, auxilio-acidente, pensao por morte, revisoes, prazos, calculos e pesquisa de jurisprudencia previdenciaria.
 ---
 
-# Advocacia Previdenciaria Barkoski V2
+# Advocacia Previdenciaria Barkoski
 
 Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minutas para revisao integral do advogado; nunca prometa resultado, protocolo ou concessao.
 
