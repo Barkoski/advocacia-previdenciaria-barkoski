@@ -1,4 +1,4 @@
-# Harumi, OCR e RAG local
+# OCR e RAG local
 
 Usar ferramentas locais para indexar, extrair e recuperar documentos. Elas aceleram a leitura, mas nao substituem conferencia humana, fonte oficial ou calculo deterministico.
 

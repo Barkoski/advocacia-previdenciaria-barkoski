@@ -35,7 +35,7 @@ Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minu
 - Peticao, recurso, impugnacao ou PJe: [revisao-de-pecas-pje.md](references/revisao-de-pecas-pje.md).
 - Jurisprudencia ou legislacao: [jurisprudencia.md](references/jurisprudencia.md).
 - Conselho antes de protocolo: [conselho-pre-protocolar.md](references/conselho-pre-protocolar.md).
-- OCR, RAG, Harumi ou acervo local: [harumi-rag.md](references/harumi-rag.md).
+- OCR, RAG ou acervo local: [rag-local.md](references/rag-local.md).
 - Conteudo educativo: [conteudo-profissional.md](references/conteudo-profissional.md).
 
 Ler somente os modulos necessarios; combinar modulos quando a tarefa realmente atravessar fluxos.

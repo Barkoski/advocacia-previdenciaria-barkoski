@@ -13,12 +13,12 @@ Traduz as travas do SKILL.md em regras de uso das ferramentas deste ambiente. Le
 
 ## Acervos locais do escritorio
 
-Fontes locais que costumam existir na maquina (confirmar caminho e conteudo atual antes de afirmar que foram usadas):
+Fontes locais que costumam existir na maquina (confirmar caminho e conteudo atual antes de afirmar que foram usadas; caminho e nome variam por escritorio, ajustar aos seus):
 
-- `C:\Users\Aaaa\Desktop\IA-Processos` — Harumi: OCR, indexacao e relatorios `.md` por PDF. Fluxo definido pelo advogado: a Harumi faz o trabalho bruto local e os `.md` de transcricao entram aqui como fonte dos fatos. Transcricao da Harumi e leitura assistida, nao prova; a fonte continua sendo o PDF, pagina X.
-- `C:\Users\Aaaa\Desktop\Boletins TRF1` — acervo de boletins e ementarios do TRF1 com busca offline. Serve como `ACERVO LOCALIZADOR` na regra de [jurisprudencia.md](jurisprudencia.md): localiza julgado, nao confirma vigencia, integra ou status atual. Ao citar, dar boletim e pagina para conferencia.
+- Assistente local de OCR/RAG do escritorio, quando existir: gera relatorios `.md` por PDF a partir de indexacao local. Fluxo recomendado: o assistente local faz o trabalho bruto (OCR, indexacao) e os `.md` de transcricao entram aqui como fonte dos fatos. Transcricao assistida e leitura de apoio, nao prova; a fonte continua sendo o PDF, pagina X.
+- Acervo local de jurisprudencia (boletins, ementarios, PDFs baixados), quando existir: serve como `ACERVO LOCALIZADOR` na regra de [jurisprudencia.md](jurisprudencia.md) — localiza julgado, nao confirma vigencia, integra ou status atual. Ao citar, dar a fonte local e a pagina para conferencia.
 
-Aplicar [harumi-rag.md](harumi-rag.md) sempre que a origem for RAG, OCR ou busca semantica.
+Aplicar [rag-local.md](rag-local.md) sempre que a origem for RAG, OCR ou busca semantica.
 
 ## Pesquisa externa e sigilo
 
@@ -31,7 +31,7 @@ Aplicar [harumi-rag.md](harumi-rag.md) sempre que a origem for RAG, OCR ou busca
 ## Data, prazo e calculo
 
 - Usar a data atual informada no ambiente como referencia e mostrar o calculo (termo inicial, regra de contagem, termo final).
-- Nao fazer aritmetica previdenciaria de cabeca em resultado que vai para peca. Conferir com ferramenta deterministica (script em `Bash`/`PowerShell` no scratchpad, planilha, ou o modulo de calculos da Harumi) e mostrar a memoria de calculo. Ver [prazos-e-calculos.md](prazos-e-calculos.md).
+- Nao fazer aritmetica previdenciaria de cabeca em resultado que vai para peca. Conferir com ferramenta deterministica (script em `Bash`/`PowerShell` no scratchpad, planilha, ou modulo de calculos do escritorio) e mostrar a memoria de calculo. Ver [prazos-e-calculos.md](prazos-e-calculos.md).
 
 ## Entrega
 

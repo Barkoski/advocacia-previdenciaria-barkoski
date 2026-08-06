@@ -45,7 +45,7 @@ skills/advocacia-previdenciaria-barkoski/
     ├── jurisprudencia.md             # regra de fonte oficial vs. acervo local
     ├── prazos-e-calculos.md          # prazo, decadência, prescrição, cálculo
     ├── privacidade-e-sigilo.md       # classificação de destino do dado
-    ├── harumi-rag.md                 # uso de OCR/RAG local como apoio, não como prova
+    ├── rag-local.md                  # uso de OCR/RAG local como apoio, não como prova
     ├── configuracao-barkoski.md      # políticas do escritório
     └── conteudo-profissional.md      # regras para conteúdo educativo público
 ```
