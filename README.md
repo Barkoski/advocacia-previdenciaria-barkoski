@@ -220,6 +220,56 @@ Ao final de qualquer etapa, mostre o texto completo do configuracao-barkoski.md
 resultante antes de salvar, para eu confirmar.
 ```
 
+### Caminho alternativo: aprender pelas suas próprias peças
+
+Se você não tem paciência para a entrevista — ou se acha difícil descrever o próprio estilo em abstrato — existe um caminho melhor: deixar o Claude ler peças que **você já escreveu** e extrair o padrão de lá.
+
+Costuma ser mais fiel que a autodeclaração. A maioria das pessoas descreve mal o próprio jeito de redigir, mas o jeito está visível no trabalho pronto.
+
+**Antes de começar, sobre sigilo:** use peça já protocolada ou com os dados do cliente removidos. Nome, CPF, NB e número de processo não interessam para o que se quer extrair — o objeto é a forma, não o caso. Rodando em Claude Code na sua máquina, os arquivos não saem dela; ainda assim, anonimizar é o hábito certo.
+
+**Escolha das peças:** 3 ou 4, de tipos e matérias diferentes (uma inicial, um recurso, uma impugnação; se possível, matérias distintas). Duas peças do mesmo tipo produzem padrões frágeis — o que parece estilo do escritório pode ser exigência daquele tipo de caso.
+
+```
+Você vai aprender o estilo de trabalho do meu escritório lendo peças que eu mesmo
+escrevi, em vez de eu responder um questionário.
+
+Sigilo: as peças podem conter dados de cliente. Não repita nome, CPF, NB ou número
+de processo em nenhuma saída sua — o que interessa é a forma, não o caso. Não envie
+nada para fora da máquina.
+
+PASSO 1 — Leia as peças que eu indicar.
+
+PASSO 2 — Extraia SOMENTE padrões observáveis e repetidos. Para cada um, diga em
+quantas peças ele aparece:
+- Presente em TODAS: registre como padrão.
+- Presente em apenas UMA: registre como "observado uma vez" e me pergunte se é
+  regra do escritório ou circunstância daquele caso.
+- Assunto que não aparece em nenhuma: NÃO invente preferência. Liste ao final em
+  "não foi possível inferir".
+
+Observe pelo menos: endereçamento e qualificação; como nomeia as partes; estrutura
+e ordem das seções; densidade da fundamentação (enxuta ou desenvolvida, uso de
+doutrina); se usa pedido subsidiário; postura quanto a tutela de urgência; se lista
+documentos; que tribunais cita; como trata valor da causa; e qualquer recorrência
+que eu não tenha listado.
+
+PASSO 3 — Antes de concluir, avalie o viés da amostra: se as peças forem todas do
+mesmo rito, da mesma matéria ou da mesma fase, avise que parte dos padrões pode ser
+exigência daquele tipo de caso, não política do escritório. Diga quais itens estão
+nessa situação.
+
+PASSO 4 — Me mostre o resultado em quatro blocos: PADRÕES CONFIRMADOS, OBSERVADO UMA
+VEZ (a confirmar), NÃO FOI POSSÍVEL INFERIR e RESSALVA DE AMOSTRA.
+
+PASSO 5 — Só depois da minha confirmação, grave os padrões confirmados como
+subseções "## Preferências — ..." em
+skills/advocacia-previdenciaria-barkoski/references/configuracao-barkoski.md.
+Não edite nenhum outro arquivo.
+```
+
+Os dois caminhos se somam: dá para extrair das peças primeiro e depois rodar a entrevista só nos pontos que ficaram em "não foi possível inferir".
+
 ### Depois de personalizar
 
 Peça ao Claude para rodar um caso real (ou um caso de teste sem dados sensíveis) e confira se as preferências pegaram. Se algo ficou fora do esperado, é só continuar a conversa — o arquivo é texto, e ajustar é conversar.
