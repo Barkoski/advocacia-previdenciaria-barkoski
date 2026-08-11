@@ -74,6 +74,30 @@ O `SKILL.md` fica enxuto e delega para `references/` sob demanda — só o módu
 
 ## Instalação
 
+### Claude Code — pelo marketplace (recomendado)
+
+Instalação em duas linhas, com atualização automática pelo catálogo `barkoski-skills`:
+
+```text
+/plugin marketplace add Barkoski/advocacia-previdenciaria-barkoski
+/plugin install advocacia-previdenciaria-barkoski@barkoski-skills
+```
+
+Para atualizar depois:
+
+```text
+/plugin marketplace update barkoski-skills
+/plugin update advocacia-previdenciaria-barkoski@barkoski-skills
+```
+
+O catálogo `barkoski-skills` traz também a skill [dossiê](https://github.com/Barkoski/dossie), que estrutura a análise já feita em tabela de provas, cronologia, grafo e relatório auditável:
+
+```text
+/plugin install dossie@barkoski-skills
+```
+
+O mesmo catálogo é publicado nos dois repositórios, então `/plugin marketplace add Barkoski/dossie` leva ao mesmo resultado.
+
 ### Claude Code — sem terminal
 
 1. Clique em **Code → Download ZIP** no topo desta página e extraia.
@@ -320,6 +344,10 @@ Se quiser voltar ao padrão, apague as subseções `## Preferências — ...` qu
 - **Só Direito Previdenciário brasileiro.** Pedido de outra área é sinalizado, não respondido como se a skill fosse especialista nisso.
 - **Não é ferramenta de cálculo.** Prazo, RMI, tempo de contribuição e valor da causa exigem parâmetros confirmados ou ferramenta determinística externa; sem isso, a skill entrega roteiro e premissas, não número final.
 - **Não substitui o advogado.** Toda saída é material de apoio para revisão humana — o objetivo é eliminar trabalho mecânico e alucinação, não eliminar o julgamento profissional.
+
+## Autoria
+
+Lucas Barkoski — [github.com/Barkoski](https://github.com/Barkoski). Publicada no catálogo `barkoski-skills`.
 
 ## Licença
 
