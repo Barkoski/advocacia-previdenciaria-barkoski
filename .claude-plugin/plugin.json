@@ -1,7 +1,7 @@
 {
   "name": "advocacia-previdenciaria-barkoski",
-  "version": "2.0.0",
-  "description": "Direito Previdenciario brasileiro com rastreabilidade documental: analise de autos, cronologia, matriz requisito-prova-risco, analise adversarial, redacao e revisao de pecas, prazos e decisao operacional.",
+  "version": "2.1.0",
+  "description": "Direito Previdenciario brasileiro com rastreabilidade documental: identificacao e indice de documentos, analise de autos, cronologia, matriz requisito-prova-risco, analise adversarial, redacao e revisao de pecas, prazos e decisao operacional.",
   "author": {
     "name": "Lucas Barkoski"
   },
