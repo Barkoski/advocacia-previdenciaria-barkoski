@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0",
+  "caso": {
+    "parte": "Requerente Ficticia",
+    "cpf": "?",
+    "especie": "Aposentadoria por idade rural",
+    "nb": "?",
+    "der": "12/03/2024",
+    "processo_ou_protocolo": "?",
+    "fase": "Recurso administrativo",
+    "data_referencia": "11/08/2026"
+  },
+  "triagem": {
+    "tipo_procedimento": "Recurso ordinario a Junta de Recursos",
+    "assunto_principal": "Aposentadoria por idade rural",
+    "questao_central": "A prova material apresentada cobre a carencia exigida na DER",
+    "pontos_controvertidos": [
+      "Extensao temporal do inicio de prova material",
+      "Efeito do vinculo urbano do conjuge sobre a economia familiar"
+    ],
+    "fundamento_do_indeferimento": "Ausencia de inicio de prova material contemporaneo",
+    "palavras_chave": ["Trabalho rural", "Economia familiar", "Inicio de prova material"],
+    "origem": "PDF do processo administrativo, paginas 1 a 88",
+    "normas_invocadas": ["L 8.213/1991, Art. 48", "Sumula 54 TNU"]
+  },
+  "documentos": [
+    {
+      "id": "D1",
+      "familia": "DECISAO_ADMINISTRATIVA",
+      "tipo": "Comunicacao de decisao de indeferimento",
+      "titular": "Requerente Ficticia",
+      "evento_inicio": "?",
+      "pagina_inicio": "p. 3",
+      "evento_fim": "?",
+      "pagina_fim": "p. 4",
+      "data": "20/05/2024",
+      "localizacao": "pp. 3-4",
+      "resumo": "Indefere o pedido por ausencia de inicio de prova material contemporaneo ao periodo de carencia.",
+      "criterio_delimitacao": "Cabecalho do INSS na p. 3 e assinatura do analista na p. 4",
+      "confianca_identificacao": "ALTA",
+      "qualidade_da_leitura": "TEXTO NITIDO",
+      "lido": true,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    },
+    {
+      "id": "D2",
+      "familia": "PROVA_RURAL",
+      "tipo": "Bloco de notas de produtor rural",
+      "titular": "Requerente Ficticia",
+      "evento_inicio": "?",
+      "pagina_inicio": "p. 41",
+      "evento_fim": "?",
+      "pagina_fim": "p. 47",
+      "data": "1998 a 2004",
+      "localizacao": "pp. 41-47",
+      "resumo": "Sete notas de venda de leite, entre 120 e 400 litros, emitidas em nome da requerente.",
+      "criterio_delimitacao": "Mudanca de emissor na p. 41 e inicio de outro documento na p. 48",
+      "confianca_identificacao": "MEDIA",
+      "qualidade_da_leitura": "OCR DUVIDOSO",
+      "lido": true,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    },
+    {
+      "id": "D3",
+      "familia": "PROVA_CIVIL",
+      "tipo": "Certidao de casamento",
+      "titular": "Conjuge Ficticio",
+      "evento_inicio": "?",
+      "pagina_inicio": "p. 62",
+      "evento_fim": "?",
+      "pagina_fim": "p. 62",
+      "data": "1994",
+      "localizacao": "p. 62",
+      "resumo": "Registra a profissao de lavrador do conjuge na data do casamento.",
+      "criterio_delimitacao": "Documento de pagina unica, com selo do cartorio",
+      "confianca_identificacao": "ALTA",
+      "qualidade_da_leitura": "TEXTO NITIDO",
+      "lido": true,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    },
+    {
+      "id": "D4",
+      "familia": "VINCULO_E_CONTRIBUICAO",
+      "tipo": "CNIS do conjuge",
+      "titular": "Conjuge Ficticio",
+      "evento_inicio": "?",
+      "pagina_inicio": "?",
+      "evento_fim": "?",
+      "pagina_fim": "?",
+      "data": "?",
+      "localizacao": "PAGINA NAO IDENTIFICADA",
+      "resumo": "Citado na decisao como fundamento do vinculo urbano, mas nao localizado no PDF recebido.",
+      "criterio_delimitacao": "Mencionado na decisao; nao encontrado na faixa lida",
+      "confianca_identificacao": "BAIXA",
+      "qualidade_da_leitura": "NAO LIDO",
+      "lido": false,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    }
+  ],
+  "fatos": [
+    {
+      "id": "F1",
+      "enunciado": "O INSS indeferiu o pedido por ausencia de inicio de prova material contemporaneo.",
+      "data": "20/05/2024",
+      "grau": "FATO COMPROVADO",
+      "documentos": ["D1"],
+      "base_inferencia": "",
+      "origem": "Leitura das pp. 3-4"
+    },
+    {
+      "id": "F2",
+      "enunciado": "Ha registro de venda de leite em nome da requerente entre 1998 e 2004.",
+      "data": "1998 a 2004",
+      "grau": "FATO COMPROVADO",
+      "documentos": ["D2"],
+      "base_inferencia": "",
+      "origem": "Leitura das pp. 41-47"
+    },
+    {
+      "id": "F3",
+      "enunciado": "A atividade rural do grupo familiar se estendeu ao periodo de carencia.",
+      "data": "?",
+      "grau": "INFERENCIA",
+      "documentos": ["D2", "D3"],
+      "base_inferencia": "Deduzido da qualificacao de lavrador em 1994 somada as notas de 1998 a 2004; nao ha documento no intervalo de 1995 a 1997.",
+      "origem": "Analise conjunta das pp. 41-47 e 62"
+    },
+    {
+      "id": "F4",
+      "enunciado": "O conjuge manteve vinculo urbano durante parte do periodo.",
+      "data": "?",
+      "grau": "ALEGACAO",
+      "documentos": [],
+      "base_inferencia": "",
+      "origem": "Afirmado na decisao do INSS, sem o CNIS correspondente nos autos recebidos"
+    }
+  ],
+  "provas": [
+    {
+      "id": "P1",
+      "documento": "D2",
+      "o_que_prova": "Producao rural em nome da requerente entre 1998 e 2004",
+      "requisito": "R1",
+      "conferir": "SIM"
+    },
+    {
+      "id": "P2",
+      "documento": "D3",
+      "o_que_prova": "Qualificacao rural do conjuge em 1994, como prova por extensao",
+      "requisito": "R1",
+      "conferir": "SIM"
+    }
+  ],
+  "requisitos": [
+    {
+      "id": "R1",
+      "enunciado": "Inicio de prova material da atividade rural no periodo de carencia",
+      "situacao": "PARCIALMENTE COMPROVADO",
+      "fatos": ["F2", "F3"],
+      "prova_necessaria": "Documento contemporaneo cobrindo 1995 a 1997",
+      "favoravel": "Notas de produtor de 1998 a 2004; certidao de casamento de 1994",
+      "contraria": "Vinculo urbano do conjuge alegado pelo INSS",
+      "lacuna": "Intervalo de 1995 a 1997 sem documento",
+      "risco": "Reconhecimento parcial do periodo, insuficiente para a carencia",
+      "providencia": "Buscar nota fiscal, ficha sindical ou matricula escolar do intervalo"
+    },
+    {
+      "id": "R2",
+      "enunciado": "Idade minima na DER",
+      "situacao": "?",
+      "fatos": [],
+      "prova_necessaria": "Documento de identificacao da requerente",
+      "favoravel": "",
+      "contraria": "",
+      "lacuna": "Nao analisado: documento de identificacao nao localizado na faixa lida",
+      "risco": "?",
+      "providencia": "Localizar o documento de identidade nos autos"
+    }
+  ],
+  "marcos": [
+    {
+      "marco": "DER",
+      "data": "12/03/2024",
+      "fonte": "D1",
+      "localizacao": "p. 3",
+      "grau": "FATO COMPROVADO"
+    },
+    {
+      "marco": "Ciencia do indeferimento",
+      "data": "~06/2024",
+      "fonte": "D1",
+      "localizacao": "p. 4",
+      "grau": "ALEGACAO"
+    }
+  ],
+  "normas": [
+    {
+      "referencia": "L 8.213/1991, Art. 48",
+      "estado": "DE MEMORIA - CONFIRMAR EM FONTE OFICIAL",
+      "origem": "Citada na decisao, p. 4"
+    },
+    {
+      "referencia": "Sumula 54 TNU",
+      "estado": "PESQUISA OFICIAL PENDENTE",
+      "origem": "Citada no recurso, p. 71"
+    }
+  ],
+  "prazos": [
+    {
+      "ato": "Recurso ordinario a Junta de Recursos",
+      "termo_inicial": "?",
+      "forma_ciencia": "?",
+      "regra_contagem": "?",
+      "termo_final": "?",
+      "fonte": "D1",
+      "situacao": "PRAZO PENDENTE DE CONFERENCIA HUMANA"
+    }
+  ],
+  "conclusao": "A prova material cobre parte do periodo, mas ha lacuna documental entre 1995 e 1997, e o CNIS invocado pela decisao nao foi localizado nos autos recebidos.",
+  "decisao_operacional": "DILIGENCIAR ANTES",
+  "proxima_acao": "Requisitar copia integral do processo administrativo e buscar documento rural do intervalo de 1995 a 1997.",
+  "confianca": "Media: baseada em leitura parcial do PDF, com uma peca citada e nao localizada.",
+  "pendencias": {
+    "nao_lidos": ["D4"],
+    "sem_localizacao": [],
+    "confirmar": ["D4"],
+    "estranhos_ao_caso": []
+  }
+}
