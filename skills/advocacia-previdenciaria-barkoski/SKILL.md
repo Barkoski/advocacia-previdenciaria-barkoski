@@ -41,6 +41,7 @@ Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minu
 - Documento digitalizado, OCR, RAG ou acervo local: [rag-local.md](references/rag-local.md).
 - Inventario de prova de qualquer caso com documento: [tabela-de-provas.md](references/tabela-de-provas.md).
 - Conteudo educativo: [conteudo-profissional.md](references/conteudo-profissional.md).
+- Antes de apresentar analise, indice, tabela de provas ou minuta como concluida: [validacao.md](references/validacao.md).
 
 Ler somente os modulos necessarios; combinar modulos quando a tarefa realmente atravessar fluxos.
 
