@@ -55,6 +55,7 @@ skills/advocacia-previdenciaria-barkoski/
 └── references/
     ├── analise-de-caso.md            # fluxo obrigatório de leitura e diagnóstico
     ├── identificacao-documental.md   # índice de peças, tipo documental, FIRAC+ e triagem
+    ├── validacao.md                  # checklist humano e validador determinístico
     ├── padrao-de-evidencia.md        # formato de citação e matriz requisito-prova-risco
     ├── tabela-de-provas.md           # inventário de prova conferível, com página e titular
     ├── rag-local.md                  # documento digitalizado, OCR, RAG e limites de leitura

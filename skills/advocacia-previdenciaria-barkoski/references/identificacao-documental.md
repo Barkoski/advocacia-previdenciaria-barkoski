@@ -123,14 +123,17 @@ Com o indice fechado, seguir para [analise-de-caso.md](analise-de-caso.md) e [pa
 
 Somente quando o advogado pedir saida estruturada para planilha, base ou automacao. Sem pedido expresso, entregar em texto e tabela.
 
+Este e o formato que o validador de [validacao.md](validacao.md) verifica. Exemplo completo e valido em `examples/caso-ficticio.json`.
+
 ```json
 {
+  "schema_version": "1.0",
   "caso": {
-    "parte": "?", "cpf": "?", "especie": "?", "nb": "?", "der": "?",
-    "processo_ou_protocolo": "?", "fase": "?", "data_referencia": ""
+    "parte": "", "cpf": "?", "especie": "", "nb": "?", "der": "?",
+    "processo_ou_protocolo": "?", "fase": "", "data_referencia": ""
   },
   "triagem": {
-    "tipo_procedimento": "?", "assunto_principal": "?", "questao_central": "?",
+    "tipo_procedimento": "", "assunto_principal": "", "questao_central": "",
     "pontos_controvertidos": [], "fundamento_do_indeferimento": "?",
     "palavras_chave": [], "normas_invocadas": [], "origem": ""
   },
@@ -139,16 +142,33 @@ Somente quando o advogado pedir saida estruturada para planilha, base ou automac
       "id": "D1", "familia": "", "tipo": "", "titular": "?",
       "evento_inicio": "?", "pagina_inicio": "?",
       "evento_fim": "?", "pagina_fim": "?", "data": "?",
-      "resumo": "", "criterio_delimitacao": "",
+      "localizacao": "", "resumo": "", "criterio_delimitacao": "",
       "confianca_identificacao": "", "qualidade_da_leitura": "", "lido": true,
-      "documento_estranho": false, "motivo_divergencia": "—"
+      "documento_estranho": false, "motivo_divergencia": ""
     }
   ],
-  "marcos": [{ "marco": "", "data": "?", "fonte": "", "localizacao": "?", "grau": "" }],
-  "matriz": [
+  "fatos": [
     {
-      "requisito": "", "prova_necessaria": "", "favoravel": "", "contraria": "",
-      "lacuna": "", "situacao": "", "risco": "", "providencia": ""
+      "id": "F1", "enunciado": "", "data": "?", "grau": "",
+      "documentos": ["D1"], "base_inferencia": "", "origem": ""
+    }
+  ],
+  "provas": [
+    { "id": "P1", "documento": "D1", "o_que_prova": "", "requisito": "R1", "conferir": "SIM" }
+  ],
+  "requisitos": [
+    {
+      "id": "R1", "enunciado": "", "situacao": "", "fatos": ["F1"],
+      "prova_necessaria": "", "favoravel": "", "contraria": "",
+      "lacuna": "", "risco": "", "providencia": ""
+    }
+  ],
+  "marcos": [{ "marco": "", "data": "?", "fonte": "D1", "localizacao": "?", "grau": "" }],
+  "normas": [{ "referencia": "", "estado": "", "origem": "" }],
+  "prazos": [
+    {
+      "ato": "", "termo_inicial": "?", "forma_ciencia": "?", "regra_contagem": "?",
+      "termo_final": "?", "fonte": "D1", "situacao": "PRAZO PENDENTE DE CONFERENCIA HUMANA"
     }
   ],
   "conclusao": "", "decisao_operacional": "", "proxima_acao": "", "confianca": "",
@@ -156,7 +176,18 @@ Somente quando o advogado pedir saida estruturada para planilha, base ou automac
 }
 ```
 
-`situacao` usa `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO` ou `NAO APLICAVEL`. `decisao_operacional` usa uma das opcoes da entrega padrao do SKILL.md. Campo sem base no material fica `?` ou `NAO E POSSIVEL CONFIRMAR COM O MATERIAL DISPONIVEL`; nunca preencher por plausibilidade.
+Conjuntos fechados, verificados pelo validador:
+
+- `grau` do fato e do marco: `FATO COMPROVADO`, `ALEGACAO`, `INFERENCIA`, `CONCLUSAO JURIDICA`.
+- `situacao` do requisito: `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO`, `NAO APLICAVEL`, `?`.
+- `qualidade_da_leitura`: `TEXTO NITIDO`, `OCR DUVIDOSO`, `LEITURA PARCIAL`, `ILEGIVEL`, `NAO LIDO`.
+- `estado` da norma: `FONTE OFICIAL CONSULTADA AGORA`, `ARQUIVO OFICIAL CAPTURADO`, `ACERVO LOCALIZADOR`, `PESQUISA OFICIAL PENDENTE`, `DE MEMORIA - CONFIRMAR EM FONTE OFICIAL`.
+- `decisao_operacional`: uma das oito da entrega padrao do SKILL.md.
+- `conferir`: `SIM` ou `NAO`, e obrigatoriamente `SIM` quando a qualidade nao for `TEXTO NITIDO`, quando faltar localizacao, ou quando o titular nao for a parte.
+
+Regras de coerencia que o validador recusa violar: `FATO COMPROVADO` exige documento lido e com localizacao; documento `NAO LIDO` nao entra em `provas`; `INFERENCIA` exige `base_inferencia`; prazo com elemento ausente exige `situacao` pendente e nao pode afirmar `termo_final`; marco com data em `~` sai como `ALEGACAO`; documento nao lido, sem localizacao, de confianca `BAIXA` ou estranho ao caso precisa constar do bloco de pendencia correspondente.
+
+Campo sem base no material fica `?`; nunca preencher por plausibilidade.
 
 ## Fechamento
 
