@@ -10,7 +10,7 @@ Declarar um destes estados:
 
 - `FONTE OFICIAL CONSULTADA AGORA`: pagina ou documento oficial aberto e identificado neste trabalho.
 - `ARQUIVO OFICIAL CAPTURADO`: arquivo oficial anexado ou captura com URL, orgao e data; confirma o conteudo capturado, nao a situacao posterior.
-- `ACERVO LOCALIZADOR`: acervo local, Garimpo, Drive, HTML, PDF ou ementa interna; usar para localizar, nao para afirmar vigencia ou status atual.
+- `ACERVO LOCALIZADOR`: acervo local do escritorio, Drive, HTML, PDF ou ementa interna; usar para localizar, nao para afirmar vigencia ou status atual.
 - `PESQUISA OFICIAL PENDENTE`: fonte suficiente nao estava acessivel.
 
 Nao alegar acesso a navegador, computador, Drive, portal ou banco que nao esteja efetivamente disponivel. Respeitar login, CAPTCHA, paywall e regras do portal; nunca tentar contornar controles.
