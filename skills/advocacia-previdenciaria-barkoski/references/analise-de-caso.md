@@ -3,7 +3,7 @@
 ## Fluxo obrigatorio
 
 1. Delimitar beneficio, via, fase, decisao enfrentada, pergunta central, arquivos, prazo aparente e destino permitido dos dados.
-2. Montar inventario: `ARQUIVO | paginas | tipo | pessoa/NB/processo | legibilidade | utilidade | problema`.
+2. Montar inventario: `ARQUIVO | paginas | tipo | pessoa/NB/processo | legibilidade | utilidade | problema`. Em autos extensos, PDF integral ou copia do PJe, substituir o inventario pelo indice de [identificacao-documental.md](identificacao-documental.md).
 3. Aplicar o [padrao de evidencia](padrao-de-evidencia.md) e segregar possivel documento estranho.
 4. Construir cronologia: `DATA/PERIODO | EVENTO | FONTE | PAGINA/ID | CLASSIFICACAO | RELEVANCIA`.
 5. Montar matriz requisito-prova-risco antes de definir tese, rota ou peca.

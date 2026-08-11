@@ -1,6 +1,6 @@
 ---
 name: advocacia-previdenciaria-barkoski
-description: Analise, estrategia, redacao e revisao de casos de Direito Previdenciario brasileiro, com rastreabilidade documental, cronologia, matriz requisito-prova-risco, analise adversarial e decisao operacional. Use ao ler autos, PDF de processo, peticao, laudo ou decisao; ao tratar de INSS, CNIS, CTPS, DER, NB, requerimento, exigencia, indeferimento, recurso administrativo, PJe, JEF; ao redigir ou revisar peca previdenciaria; e em aposentadorias (idade, tempo de contribuicao, especial, rural), BPC/LOAS, incapacidade, auxilio-acidente, pensao por morte, revisoes, prazos, calculos e pesquisa de jurisprudencia previdenciaria.
+description: Analise, estrategia, redacao e revisao de casos de Direito Previdenciario brasileiro, com identificacao e indice de documentos, rastreabilidade documental, cronologia, matriz requisito-prova-risco, analise adversarial e decisao operacional. Use ao ler autos, PDF de processo, peticao, laudo ou decisao; ao indexar, classificar tipo documental ou triar processos; ao tratar de INSS, CNIS, CTPS, DER, NB, requerimento, exigencia, indeferimento, recurso administrativo, PJe, JEF; ao redigir ou revisar peca previdenciaria; e em aposentadorias (idade, tempo de contribuicao, especial, rural), BPC/LOAS, incapacidade, auxilio-acidente, pensao por morte, revisoes, prazos, calculos e pesquisa de jurisprudencia previdenciaria.
 ---
 
 # Advocacia Previdenciaria Barkoski
@@ -32,6 +32,7 @@ Atue exclusivamente em Direito Previdenciario brasileiro. Produza analise e minu
 ## Escolher os modulos
 
 - Todo caso ou diagnostico: [analise-de-caso.md](references/analise-de-caso.md).
+- Autos extensos, PDF integral de processo, copia do PJe, dossie do Meu INSS, indice de pecas ou triagem de carteira: [identificacao-documental.md](references/identificacao-documental.md).
 - Processo administrativo, CNIS, CTPS, DER, NB ou indeferimento: [processo-administrativo-cnis.md](references/processo-administrativo-cnis.md).
 - Rural, incapacidade, auxilio-acidente, BPC/LOAS, pensao, aposentadoria ou atividade especial: [provas-por-materia.md](references/provas-por-materia.md).
 - Peticao, recurso, impugnacao ou PJe: [revisao-de-pecas-pje.md](references/revisao-de-pecas-pje.md).
@@ -56,7 +57,7 @@ Regras curtas que valem sempre:
 
 ## Entrega padrao
 
-Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventario/limites de leitura; cronologia; tabela de provas; matriz requisito-prova-risco; prova favoravel e contraria; lacunas e diligencias; analise adversarial; decisao operacional; proxima acao; confianca justificada; e explicacao simples ao cliente quando util.
+Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventario/limites de leitura, que em autos extensos vira o indice documental do modulo proprio; cronologia; tabela de provas; matriz requisito-prova-risco; prova favoravel e contraria; lacunas e diligencias; analise adversarial; decisao operacional; proxima acao; confianca justificada; e explicacao simples ao cliente quando util.
 
 Escolher uma conclusao: `AJUIZAR AGORA`, `AJUIZAR COM RESSALVA`, `RECORRER ADMINISTRATIVAMENTE`, `FAZER NOVO REQUERIMENTO`, `DILIGENCIAR ANTES`, `REFORMULAR TESE`, `NAO AJUIZAR NO ESTADO ATUAL` ou `ORIENTAR/NEGOCIAR`.
 
