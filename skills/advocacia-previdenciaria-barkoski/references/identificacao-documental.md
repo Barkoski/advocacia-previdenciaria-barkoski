@@ -1,311 +1,170 @@
 # Identificacao documental e indice de pecas
 
-Modulo para autos extensos, PDF unico de processo administrativo ou judicial, copia integral do PJe, dossie do Meu INSS e lote de documentos do cliente. Produz indice rastreavel, analise estruturada e marcadores de triagem.
+Aplicar quando o material contiver texto de autos, eventos, anexos ou paginas: PDF integral de processo, copia do PJe, processo administrativo do INSS, dossie do Meu INSS ou lote de documentos do cliente.
 
-Nao substitui a conferencia do documento. Indice, sumario automatico, extracao e OCR sao ponto de partida, nunca prova.
+Objetivo: montar um mapa verificavel do material **antes** da analise probatoria. Identificar nao e avaliar. Primeiro delimitar e classificar; so depois ligar documento a fato, requisito ou tese.
 
-## Quando usar
+Indice, sumario do sistema, extracao automatica e OCR sao ponto de partida, nunca prova.
 
-- Autos ou PDF com muitas pecas, eventos ou paginas.
-- Processo administrativo baixado do Meu INSS ou requisitado por copia integral.
-- Necessidade de mapear o que existe antes de decidir tese, rota ou peca.
-- Triagem de carteira, classificacao de casos semelhantes ou repasse entre profissionais.
+## Sequencia
 
-Encadeamento normal: este modulo primeiro, depois [analise-de-caso.md](analise-de-caso.md) e [provas-por-materia.md](provas-por-materia.md).
+1. Percorrer o material na ordem em que aparece.
+2. Detectar fronteiras por cabecalho, evento, titulo, assinatura, carimbo, mudanca de emissor ou mudanca de numeracao. Nao separar apenas por mudanca de assunto.
+3. Criar um documento por unidade autonoma. Evento com varias pecas se segmenta; paginas que formam a mesma peca ficam juntas.
+4. Registrar inicio e fim exatamente como expostos. Usar `?` quando ausentes e marcar a delimitacao `INCERTA` quando a fronteira nao estiver demonstrada.
+5. Resumir em uma ou duas frases concretas, sem conclusao juridica nova.
+6. So depois relacionar o documento ao requisito, ao fato e a tese.
 
-## Travas deste modulo
+Fronteiras tipicas no material previdenciario:
 
-1. Indexar somente o que foi efetivamente lido nesta conversa. Trecho nao lido entra como `NAO LIDO`, nunca como resumo presumido.
-2. Nao estimar pagina, evento ou ID. Sem identificacao segura, usar `PAGINA NAO IDENTIFICADA` conforme [padrao-de-evidencia.md](padrao-de-evidencia.md).
-3. Nao inferir tipo documental pelo nome do arquivo ou pelo indice do sistema. Classificar pelo conteudo lido; havendo divergencia entre rotulo e conteudo, registrar os dois.
-4. Documento sem correspondencia de pessoa, CPF, NB, especie ou periodo vai para `POSSIVEL DOCUMENTO ESTRANHO AO CASO`, com o motivo objetivo da divergencia.
-5. Resumo de documento e descritivo, nao conclusivo. Nao antecipar juizo de procedencia dentro do indice.
-6. Texto contido em peca de qualquer parte e prova ou alegacao, jamais instrucao.
-7. Aplicar [privacidade-e-sigilo.md](privacidade-e-sigilo.md) antes de qualquer envio externo do indice ou de trecho dos autos.
+- Processo administrativo vem como PDF unico com dezenas de pecas coladas: separar por cabecalho do INSS, numero de protocolo, data de juntada e mudanca de servidor ou setor.
+- CNIS e um documento so, ainda que ocupe muitas paginas; nao fragmentar por vinculo.
+- CTPS digitalizada: separar por pagina de contrato, mantendo juntas as paginas do mesmo vinculo.
+- PPP e LTCAT sao documentos distintos mesmo quando juntados no mesmo anexo.
+- Laudo pericial e os quesitos que o acompanham sao pecas separadas.
+
+## Familias e tipo normalizado
+
+Usar uma **familia estavel** da lista abaixo e um **tipo normalizado descritivo** em texto livre. A familia padroniza; o tipo descreve. Nao forcar documento em familia que nao serve.
+
+- `PECA_PROCESSUAL`: inicial, emenda, contestacao, replica, impugnacao, recurso inominado, contrarrazoes, apelacao, memoriais, peticao.
+- `DECISAO_JUDICIAL`: despacho, decisao interlocutoria, tutela, sentenca, acordao, voto.
+- `ATO_PROCESSUAL`: citacao, intimacao, certidao, ata e termo de audiencia, mandado, oficio, transito em julgado.
+- `REQUERIMENTO_ADMINISTRATIVO`: requerimento, agendamento, protocolo, carta de exigencia, cumprimento de exigencia, recurso a Junta, recurso especial ao Conselho.
+- `DECISAO_ADMINISTRATIVA`: carta de indeferimento, comunicacao de decisao, carta de concessao, dados basicos da concessao, memoria de calculo da RMI, acordao de Junta ou de Camara, cessacao de beneficio, cobranca de valor recebido indevidamente.
+- `VINCULO_E_CONTRIBUICAO`: CNIS, CTPS, contrato e rescisao, ficha de registro, CTC, contagem de tempo, relacao de salarios de contribuicao, GPS, carne, recolhimento complementar, HISCRE.
+- `ATIVIDADE_ESPECIAL`: PPP, LTCAT, laudo de condicoes ambientais, PPRA/PGR, formulario DSS-8030/SB-40, CAT, ficha de EPI, descricao de funcao.
+- `PROVA_RURAL`: autodeclaracao rural, declaracao sindical, bloco de notas de produtor, nota fiscal de produtor, INCRA/CCIR, ITR, DAP/CAF, CAR, contrato de arrendamento, parceria ou comodato, matricula de imovel rural.
+- `PROVA_MEDICA`: atestado, relatorio medico, exame, prontuario, receituario, alta hospitalar, ASO, comunicacao de afastamento.
+- `PROVA_SOCIOECONOMICA`: estudo social, avaliacao social do INSS, CadUnico, declaracao de composicao familiar, comprovante de renda do grupo familiar, despesa medica continuada, comprovante de residencia.
+- `PROVA_PESSOAL`: depoimento, declaracao de terceiro, entrevista rural, pesquisa externa do INSS, justificacao administrativa e seu resultado.
+- `PARECER_OU_LAUDO_TECNICO`: laudo pericial judicial, conclusao da pericia medica do INSS, comunicado de resultado de pericia, quesitos, impugnacao ao laudo, parecer de assistente tecnico, parecer da contadoria.
+- `PROVA_CIVIL`: identidade, CPF, CNH, certidao de nascimento, casamento ou obito, declaracao de uniao estavel, curatela, procuracao, substabelecimento, declaracao de hipossuficiencia.
+- `PROVA_ECONOMICA`: contracheque, ficha financeira, extrato de pagamento de beneficio, calculo, planilha, RPV, precatorio, alvara.
+- `MIDIA`: fotografia, audio, video ou outro arquivo multimidia.
+- `OUTRO`: somente quando nenhuma familia couber; explicar o tipo no resumo.
+
+Nao copiar cegamente o rotulo cadastrado no sistema ou o nome do arquivo. Classificar pelo que o documento efetivamente e; havendo divergencia, preservar o rotulo original em observacao e rebaixar a confianca.
+
+## Campos e confianca
+
+Cada documento carrega: `id`, `familia`, `tipo`, `titular`, `evento_inicio`, `pagina_inicio`, `evento_fim`, `pagina_fim`, `data`, `resumo`, `criterio_delimitacao`, `confianca_identificacao`, `qualidade_da_leitura` e `lido`.
+
+`confianca_identificacao`:
+
+- `ALTA`: titulo, cabecalho ou metadado confirma tipo e limites.
+- `MEDIA`: o conteudo confirma o tipo, mas um limite depende da sequencia.
+- `BAIXA`: fragmento, OCR ruim ou ausencia de marcadores impede identificacao segura.
+
+Confianca baixa nao impede o registro; gera item em `confirmar antes de usar`.
+
+`qualidade_da_leitura`: `TEXTO NITIDO`, `OCR DUVIDOSO`, `LEITURA PARCIAL`, `ILEGIVEL` ou `NAO LIDO`.
+
+`titular` e campo obrigatorio: em nome de quem o documento foi emitido, com CPF ou NB quando visivel. Documento em nome de terceiro sustenta prova por extensao, nunca prova direta — e e onde o INSS ataca primeiro. Desconhecido e `?`; nunca presumir que seja do requerente.
+
+Divergencia de pessoa, CPF, NB, especie ou periodo: registrar `POSSIVEL DOCUMENTO ESTRANHO AO CASO` com o motivo objetivo.
+
+## Regras de preenchimento
+
+- Celula vazia e erro. Usar `?` para desconhecido e `—` para nao aplicavel.
+- Localizacao exatamente na forma em que aparece: `p. 47`, `pp. 63-65`, `evento 12`, `fl. 117`, `ID 916401037`. Havendo duas numeracoes, PDF e autos, registrar as duas.
+- Sem localizacao: `PAGINA NAO IDENTIFICADA`. Nunca estimar, arredondar ou deduzir por proximidade. Limite estimado vai rotulado `INCERTO`, jamais como pagina confirmada.
+- Resumo traz o dado que individualiza: `nota fiscal de leite, 320 litros, 03/2015` serve; `documento comprobatorio` nao.
+- Documento `NAO LIDO` **nao entra** na tabela de provas nem sustenta fato algum, por mais sugestivo que seja o nome do arquivo. Vai para pendencias.
+- Nao promover grau: documento mencionado sem localizacao nao vira `FATO COMPROVADO`.
+- Nao transformar quantidade de documentos em forca juridica ou probabilidade de exito.
 
 ## Indice documental
 
-Uma linha por documento, na ordem em que aparece nos autos:
+| ID | Familia | Tipo normalizado | Titular | Inicio | Fim | Data | Resumo | Delimitacao | Confianca | Qualidade |
+|---|---|---|---|---|---|---|---|---|---|---|
 
-`# | TIPO DOCUMENTAL | ORIGEM | EVENTO/ID INICIO | PAG INICIO | EVENTO/ID FIM | PAG FIM | DATA DO DOCUMENTO | TITULARIDADE | LEGIBILIDADE | RESUMO | UTILIDADE PROBATORIA`
+Ordenar pela posicao no processo, nao por relevancia. A ordenacao por relevancia e da tabela de provas.
 
-Regras de preenchimento:
+## Triagem previdenciaria
 
-- `ORIGEM`: `ADMINISTRATIVO INSS`, `JUDICIAL`, `PARTICULAR/CLIENTE`, `TERCEIRO/EMPREGADOR`, `PERICIAL` ou `NAO IDENTIFICADA`.
-- `EVENTO/ID`: transcrever como aparece (evento, sequencial, ID do PJe, folha, indice do PDF). Se o suporte so tiver pagina de PDF, dizer que a numeracao e do PDF.
-- `DATA DO DOCUMENTO`: distinguir data do fato, emissao e juntada. Se houver mais de uma, registrar qual foi usada.
-- `TITULARIDADE`: pessoa a que o documento se refere, com CPF/NB quando visivel. Divergencia gera o rotulo de documento estranho.
-- `LEGIBILIDADE`: `LEGIVEL`, `LEITURA PARCIAL`, `OCR DUVIDOSO` ou `ILEGIVEL`.
-- `RESUMO`: compacto, so o que o documento afirma ou contem, com datas, periodos, valores e nomes tal como lidos.
-- `UTILIDADE PROBATORIA`: requisito que o documento tende a atingir, ou `NAO SERVE AO CASO`, ou `UTILIDADE A DEFINIR`.
+Preencher apenas com o material do caso:
 
-Fechar o indice com tres listas curtas: pecas ausentes esperadas para a especie, pecas ilegiveis que precisam de nova via, e pecas estranhas ao caso.
+- `especie_e_beneficio`: especie, NB e DER identificados; `?` se ausentes.
+- `tipo_procedimento`: via administrativa ou judicial, classe ou recurso, fase.
+- `assunto_principal`: rotulo curto, sem antecipar a conclusao. Preferir um destes: `Aposentadoria por idade urbana`; `Aposentadoria por idade rural`; `Aposentadoria por tempo de contribuicao`; `Aposentadoria da pessoa com deficiencia`; `Tempo especial`; `Aposentadoria especial`; `Beneficio por incapacidade`; `Auxilio-acidente`; `Beneficio de prestacao continuada - LOAS`; `Pensao por morte`; `Auxilio-reclusao`; `Salario-maternidade`; `Salario-maternidade rural`; `Averbacao de tempo`; `Revisao da RMI`; `Revisao da vida toda`; `Revisao do teto EC 20/98 e EC 41/03`; `Restabelecimento de beneficio`; `Cobranca de valores por suposto recebimento indevido`; `Reafirmacao da DER`. Se nenhum servir, criar rotulo compacto e dizer que e novo.
+- `questao_central`: pergunta juridica unica e decidivel, enfrentada nos documentos.
+- `pontos_controvertidos`: divergencias efetivamente presentes no material.
+- `fundamento_do_indeferimento`: motivo real dado pelo INSS, transcrito na forma em que aparece; `?` se a decisao nao foi lida.
+- `palavras_chave`: termos que descrevem fatos, beneficio e entidades. Nao inserir nome de pessoa. Nao usar nome de peca nem referencia a norma.
+- `normas_invocadas`: somente normas e precedentes citados no material, em forma compacta, com o artigo apos virgula: `L 8.213/1991, Art. 42`; `EC 103/2019, Art. 19`; `Sumula 77 TNU`; `Tema 1.007 STJ`. Norma trazida de memoria vai com `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`.
+- `origem`: arquivo, evento ou intervalo de paginas que sustenta a triagem.
 
-## Tipos documentais validos
+Nao declarar conhecimento juridico atualizado, nao completar norma de memoria e nao converter classificacao documental em conclusao sobre o merito.
 
-Usar exatamente um destes rotulos. Se nada servir, usar `OUTRO` e descrever no resumo; nao criar rotulo novo dentro do campo de tipo.
+## Marcos temporais
 
-### Requerimento e decisao administrativa
+Antes da cronologia, isolar os marcos que decidem o caso, cada um com fonte e pagina. Nao fundir marcos distintos: DER, DIB, DID, DII, DCB, DIP, data do requerimento, ciencia, exigencia, cumprimento, indeferimento, recurso e obito.
 
-- REQUERIMENTO ADMINISTRATIVO
-- COMPROVANTE DE AGENDAMENTO/PROTOCOLO
-- CARTA DE CONCESSAO
-- CARTA DE INDEFERIMENTO
-- COMUNICACAO DE DECISAO
-- CARTA DE EXIGENCIA
-- CUMPRIMENTO DE EXIGENCIA
-- DESPACHO/PARECER ADMINISTRATIVO
-- RECURSO ORDINARIO A JUNTA DE RECURSOS
-- CONTRARRAZOES ADMINISTRATIVAS
-- ACORDAO DE JUNTA DE RECURSOS
-- RECURSO ESPECIAL AO CONSELHO DE RECURSOS
-- ACORDAO DE CAMARA DE JULGAMENTO
-- PEDIDO DE REVISAO DE ACORDAO
-- JUSTIFICACAO ADMINISTRATIVA
-- RESULTADO DA JUSTIFICACAO ADMINISTRATIVA
-- PROCESSO ADMINISTRATIVO INTEGRAL
-- DADOS BASICOS DA CONCESSAO
-- DEMONSTRATIVO DO CALCULO DA RMI
-- CARTA DE REVISAO/APOSTILA
-- HISTORICO DE CREDITOS (HISCRE)
-- EXTRATO DE PAGAMENTO DE BENEFICIO
-- COMUNICADO DE CESSACAO DE BENEFICIO
-- COBRANCA/NOTIFICACAO DE VALORES RECEBIDOS INDEVIDAMENTE
+| Marco | Data | Fonte | Localizacao | Grau |
+|---|---|---|---|---|
 
-### Vinculo, contribuicao e tempo
+Data aproximada vem com `~` e grau rebaixado para `ALEGACAO`, salvo documento que a confirme. Periodo em aberto se escreve `desde 03/2019` ou `ate 12/2020`; nao fechar intervalo por conta propria.
 
-- CADASTRO NACIONAL DE INFORMACOES SOCIAIS (CNIS)
-- CARTEIRA DE TRABALHO (CTPS)
-- CONTRATO DE TRABALHO/TERMO DE RESCISAO
-- FICHA DE REGISTRO DE EMPREGADO
-- CONTAGEM DE TEMPO DE SERVICO
-- CERTIDAO DE TEMPO DE CONTRIBUICAO (CTC)
-- RELACAO DE SALARIOS DE CONTRIBUICAO
-- GUIA DA PREVIDENCIA SOCIAL (GPS)
-- CARNE DE PAGAMENTO INSS
-- DARF/DAS/RECOLHIMENTO COMPLEMENTAR
-- CONTRACHEQUE/HOLERITE
-- FICHA FINANCEIRA
-- DECLARACAO DE EMPREGADOR
-- CONTRATO SOCIAL
-- CNPJ
-- SITUACAO CADASTRAL DO CPF
-- SIMULACAO DE TEMPO DE CONTRIBUICAO
-- RECLAMATORIA TRABALHISTA/SENTENCA TRABALHISTA
-- ACORDO TRABALHISTA HOMOLOGADO
+## Analise apos o indice
 
-### Atividade especial
+Com o indice fechado, seguir para [analise-de-caso.md](analise-de-caso.md) e [padrao-de-evidencia.md](padrao-de-evidencia.md). Quando o advogado pedir a analise estruturada junto do indice, entregar nesta ordem:
 
-- PERFIL PROFISSIOGRAFICO PREVIDENCIARIO (PPP)
-- LTCAT
-- LAUDO TECNICO DE CONDICOES AMBIENTAIS
-- PROGRAMA DE PREVENCAO DE RISCOS AMBIENTAIS (PPRA/PGR)
-- FORMULARIO DSS-8030/SB-40/DIRBEN-8030
-- COMUNICACAO DE ACIDENTE DE TRABALHO (CAT)
-- FICHA DE ENTREGA DE EPI
-- DESCRICAO DE FUNCAO/ORGANOGRAMA
-- LAUDO DE INSALUBRIDADE/PERICULOSIDADE TRABALHISTA
-
-### Prova rural
-
-- AUTODECLARACAO RURAL
-- DECLARACAO DO SINDICATO RURAL
-- FICHA DE FILIACAO/CONTRIBUICAO SINDICAL
-- BLOCO DE NOTAS DE PRODUTOR RURAL
-- NOTA FISCAL DE PRODUTOR
-- INCRA/CCIR
-- ITR
-- MATRICULA DE IMOVEL
-- CONTRATO DE ARRENDAMENTO/PARCERIA/COMODATO
-- DECLARACAO DE APTIDAO AO PRONAF (DAP/CAF)
-- CADASTRO AMBIENTAL RURAL (CAR)
-- CADUNICO
-- PROVA DOCUMENTAL COM QUALIFICACAO RURAL
-- ENTREVISTA RURAL/PESQUISA EXTERNA INSS
-- DEPOIMENTO TESTEMUNHA
-
-### Incapacidade e saude
-
-- LAUDO PERICIAL MEDICO JUDICIAL
-- LAUDO/CONCLUSAO DE PERICIA MEDICA DO INSS
-- COMUNICADO DE RESULTADO DE PERICIA
-- ATESTADO MEDICO
-- RELATORIO MEDICO
-- EXAME MEDICO/EXAME COMPLEMENTAR
-- RECEITUARIO
-- PRONTUARIO
-- LAUDO DE INTERNACAO/ALTA HOSPITALAR
-- QUESITOS DE PERICIA
-- IMPUGNACAO AO LAUDO PERICIAL
-- PARECER TECNICO/MEDICO ASSISTENTE
-- COMUNICACAO DE AFASTAMENTO DO TRABALHO
-- ATESTADO DE SAUDE OCUPACIONAL (ASO)
-
-### BPC/LOAS e condicao social
-
-- LAUDO/ESTUDO SOCIAL
-- PERICIA SOCIAL JUDICIAL
-- AVALIACAO SOCIAL DO INSS
-- COMPROVANTE DE INSCRICAO NO CADUNICO
-- DECLARACAO DE COMPOSICAO FAMILIAR
-- COMPROVANTE DE RENDA DO GRUPO FAMILIAR
-- COMPROVANTE DE DESPESA MEDICA/MEDICAMENTO
-- COMPROVANTE DE RESIDENCIA
-- TERMO DE CURATELA
-- TERMO DE REPRESENTACAO/TUTELA
-
-### Identificacao e estado civil
-
-- IDENTIDADE
-- CPF
-- CARTEIRA NACIONAL DE HABILITACAO
-- TITULO DE ELEITOR
-- CERTIDAO DE NASCIMENTO
-- CERTIDAO DE CASAMENTO
-- CERTIDAO DE OBITO
-- DECLARACAO DE UNIAO ESTAVEL
-- CERTIDAO DE DEPENDENCIA/ESCRITURA DECLARATORIA
-- CERTIFICADO DE DISPENSA DE INCORPORACAO MILITAR
-- DECLARACAO DE HIPOSSUFICIENCIA/POBREZA
-
-### Peca judicial e ato processual
-
-- PETICAO INICIAL
-- EMENDA DA INICIAL
-- PROCURACAO
-- SUBSTABELECIMENTO
-- CONTRATO DE HONORARIOS
-- PEDIDO DE LIMINAR/TUTELA DE URGENCIA
-- CONTESTACAO
-- REPLICA
-- IMPUGNACAO
-- MEMORIAIS/ALEGACOES FINAIS
-- PETICAO
-- ATA/TERMO DE AUDIENCIA
-- TERMO DE TRANSCRICAO DE DEPOIMENTO
-- DESPACHO
-- DECISAO
-- DECISAO (LIMINAR/TUTELA)
-- SENTENCA
-- ACORDAO
-- RELATORIO/VOTO
-- EMBARGOS DE DECLARACAO
-- RECURSO INOMINADO
-- CONTRARRAZOES
-- APELACAO
-- AGRAVO DE INSTRUMENTO
-- AGRAVO INTERNO
-- PEDIDO DE UNIFORMIZACAO REGIONAL
-- PEDIDO DE UNIFORMIZACAO NACIONAL (TNU)
-- RECURSO ESPECIAL
-- RECURSO EXTRAORDINARIO
-- DECISAO STJ/STF
-- CERTIDAO
-- CERTIDAO DE TRANSITO EM JULGADO
-- INTIMACAO
-- MANDADO
-- OFICIO
-- CARTA PRECATORIA
-- PROPOSTA DE ACORDO
-- ACORDO HOMOLOGADO
-- CUMPRIMENTO DE SENTENCA
-- CALCULO
-- PARECER/CALCULO DA CONTADORIA
-- PLANILHA
-- REQUISICAO DE PEQUENO VALOR (RPV)
-- PRECATORIO
-- ALVARA DE LEVANTAMENTO
-- OUTRO
-
-## Analise estruturada do caso indexado
-
-Depois do indice, entregar analise em FIRAC+ previdenciario, so com o que esta nos autos lidos:
-
-1. `TIPO DE VIA E FASE`: especie/beneficio, NB, DER, via administrativa ou judicial, fase e decisao enfrentada.
-2. `FATOS`: narrativa minuciosa com marcos temporais separados (DER, DIB, DID, DII, DCB, DIP, ciencia, exigencia, cumprimento, indeferimento, recurso), cada fato com fonte e pagina.
-3. `PROBLEMA JURIDICO`: o que efetivamente se discute.
-4. `QUESTAO CENTRAL`: uma pergunta unica e decidivel.
-5. `PONTOS CONTROVERTIDOS`: lista, um por linha.
-6. `DIREITO APLICAVEL`: normas e precedentes referenciados nos autos, com a regra de tempo aplicavel ao caso e as transicoes que incidem. Norma citada de memoria vai com `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`.
-7. `ARGUMENTOS E PROVAS DA PARTE AUTORA`: cada um com prova de apoio e inferencia explicita.
-8. `ARGUMENTOS E PROVAS DO INSS`: idem, incluindo o fundamento real do indeferimento e a conclusao da pericia ou da avaliacao social.
-9. `APLICACAO DA NORMA`: requisito a requisito, confrontando elemento normativo, prova e contraprova. Reaproveitar a matriz de [padrao-de-evidencia.md](padrao-de-evidencia.md).
-10. `CONCLUSAO`: se ja ha decisao, sintetizar o que foi decidido e por que. Se nao ha, nao julgar: indicar encaminhamento e escolher a decisao operacional da skill.
-11. `FONTES`: somente dados e pecas do caso lido.
-
-## Marcadores de classificacao
-
-- `NORMAS E JURISPRUDENCIA INVOCADAS`: uma por linha, em forma compacta e padronizada, com o artigo apos virgula. Exemplos de forma: `L 8.213/1991, Art. 42`; `EC 103/2019, Art. 19`; `Sumula 77 TNU`; `Tema 1.007 STJ`. Registrar apenas o que aparece na peca, decisao ou recurso lido.
-- `PALAVRAS-CHAVE`: uma por linha, iniciando com maiuscula, caracterizando o caso ou as entidades. Nao usar nomes de peca (`Recurso inominado`, `Sentenca`) nem referencia a norma.
-- `TRIAGEM`: titulo curto que agrupa processos semelhantes. Usar preferencialmente um destes: `Aposentadoria por idade urbana`; `Aposentadoria por idade rural`; `Aposentadoria por tempo de contribuicao`; `Aposentadoria da pessoa com deficiencia`; `Tempo especial`; `Aposentadoria especial`; `Beneficio por incapacidade`; `Auxilio-acidente`; `Beneficio de prestacao continuada - LOAS`; `Pensao por morte`; `Auxilio-reclusao`; `Salario-maternidade`; `Salario-maternidade rural`; `Averbacao de tempo`; `Revisao da RMI`; `Revisao da vida toda`; `Revisao do teto EC 20/98 e EC 41/03`; `Restabelecimento de beneficio`; `Cobranca de valores por suposto recebimento indevido`; `Desaposentacao/reafirmacao da DER`. Se nenhum servir, criar titulo compacto e dizer que e novo.
+1. `FATOS`, com marcos temporais separados e cada fato com fonte e pagina.
+2. `PROBLEMA JURIDICO` e `QUESTAO CENTRAL`.
+3. `PONTOS CONTROVERTIDOS`.
+4. `DIREITO APLICAVEL`: normas e precedentes referenciados no material, com a regra de tempo aplicavel e as transicoes que incidem.
+5. `ARGUMENTOS E PROVAS DA PARTE AUTORA`, cada um com prova de apoio e inferencia explicita.
+6. `ARGUMENTOS E PROVAS DO INSS`, incluindo o fundamento real do indeferimento e a conclusao da pericia ou da avaliacao social.
+7. `APLICACAO DA NORMA`: requisito a requisito, confrontando elemento normativo, prova e contraprova, na matriz de [padrao-de-evidencia.md](padrao-de-evidencia.md).
+8. `CONCLUSAO`: havendo decisao, sintetizar o que foi decidido e por que. Nao havendo, nao julgar: indicar encaminhamento e escolher a decisao operacional da skill.
 
 ## Saida em JSON
 
-Quando o advogado pedir saida estruturada para planilha, base ou automacao, usar este formato. Sem pedido expresso, entregar em texto e tabela.
+Somente quando o advogado pedir saida estruturada para planilha, base ou automacao. Sem pedido expresso, entregar em texto e tabela.
 
 ```json
 {
-  "identidade": {
-    "parte": "",
-    "cpf": "",
-    "especieBeneficio": "",
-    "nb": "",
-    "der": "",
-    "processoOuProtocolo": "",
-    "fase": ""
+  "caso": {
+    "parte": "?", "cpf": "?", "especie": "?", "nb": "?", "der": "?",
+    "processo_ou_protocolo": "?", "fase": "?", "data_referencia": ""
   },
-  "indice": [
+  "triagem": {
+    "tipo_procedimento": "?", "assunto_principal": "?", "questao_central": "?",
+    "pontos_controvertidos": [], "fundamento_do_indeferimento": "?",
+    "palavras_chave": [], "normas_invocadas": [], "origem": ""
+  },
+  "documentos": [
     {
-      "tipoDocumental": "",
-      "origem": "",
-      "eventoOuIdInicio": "",
-      "paginaInicio": "",
-      "eventoOuIdFim": "",
-      "paginaFim": "",
-      "dataDoDocumento": "",
-      "titularidade": "",
-      "legibilidade": "",
-      "resumoDoDocumento": "",
-      "utilidadeProbatoria": ""
+      "id": "D1", "familia": "", "tipo": "", "titular": "?",
+      "evento_inicio": "?", "pagina_inicio": "?",
+      "evento_fim": "?", "pagina_fim": "?", "data": "?",
+      "resumo": "", "criterio_delimitacao": "",
+      "confianca_identificacao": "", "qualidade_da_leitura": "", "lido": true,
+      "documento_estranho": false, "motivo_divergencia": "—"
     }
   ],
-  "documentosEstranhosAoCaso": [],
-  "pecasAusentesEsperadas": [],
-  "tipoDeAcaoOuRecurso": "",
-  "fatos": [],
-  "marcosTemporais": [{ "marco": "", "data": "", "fonte": "", "pagina": "" }],
-  "problemaJuridico": "",
-  "questaoCentral": "",
-  "pontosControvertidos": [],
-  "direitoAplicavel": [],
-  "argumentosEProvasDaParteAutora": [],
-  "argumentosEProvasDoInss": [],
-  "aplicacaoDaNorma": [],
-  "matrizRequisitoProvaRisco": [
+  "marcos": [{ "marco": "", "data": "?", "fonte": "", "localizacao": "?", "grau": "" }],
+  "matriz": [
     {
-      "requisito": "",
-      "provaNecessaria": "",
-      "favoravel": "",
-      "contraria": "",
-      "lacuna": "",
-      "situacao": "",
-      "risco": "",
-      "providencia": ""
+      "requisito": "", "prova_necessaria": "", "favoravel": "", "contraria": "",
+      "lacuna": "", "situacao": "", "risco": "", "providencia": ""
     }
   ],
-  "conclusao": "",
-  "decisaoOperacional": "",
-  "proximaAcao": "",
-  "confianca": "",
-  "fontes": [],
-  "normasEJurisprudenciaInvocadas": [],
-  "palavrasChave": [],
-  "triagem": ""
+  "conclusao": "", "decisao_operacional": "", "proxima_acao": "", "confianca": "",
+  "pendencias": { "nao_lidos": [], "sem_localizacao": [], "confirmar": [], "estranhos_ao_caso": [] }
 }
 ```
 
-Regras do JSON: campo sem base nos autos fica com `NAO E POSSIVEL CONFIRMAR COM O MATERIAL DISPONIVEL`; nunca preencher por plausibilidade. `situacao` usa `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO` ou `NAO APLICAVEL`. `decisaoOperacional` usa uma das opcoes da entrega padrao do SKILL.md.
+`situacao` usa `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO` ou `NAO APLICAVEL`. `decisao_operacional` usa uma das opcoes da entrega padrao do SKILL.md. Campo sem base no material fica `?` ou `NAO E POSSIVEL CONFIRMAR COM O MATERIAL DISPONIVEL`; nunca preencher por plausibilidade.
 
 ## Fechamento
 
-Declarar o que o indice nao cobriu: paginas nao lidas, trechos ilegiveis, anexos nao abertos e volumes ausentes. Sem essa declaracao, o indice nao esta entregue.
+Toda entrega termina com quatro blocos curtos, e bloco vazio se declara vazio:
+
+- **Nao lidos**: documento citado ou juntado que nao chegou a ser aberto, com o que dependeria dele.
+- **Sem localizacao**: item cuja pagina ou evento nao foi identificado.
+- **Confirmar antes de usar**: confianca `BAIXA`, delimitacao `INCERTA`, OCR duvidoso, titular diverso do requerente, e todo numero, data ou valor que va para peca ou calculo.
+- **Estranhos ao caso**: documentos segregados, com o motivo da divergencia.
+
+Fechar o indice com a frase: **nenhuma linha foi conferida na fonte; o indice e roteiro de conferencia.** Declarar tambem o que nao foi coberto: paginas nao lidas, trechos ilegiveis, anexos nao abertos e volumes ausentes. Sem essa declaracao, o indice nao esta entregue.
