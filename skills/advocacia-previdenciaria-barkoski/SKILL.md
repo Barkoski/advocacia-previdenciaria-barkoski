@@ -60,6 +60,10 @@ Regras curtas que valem sempre:
 
 Salvo pedido diverso, entregar: resumo executivo; identidade e escopo; inventario/limites de leitura, que em autos extensos vira o indice documental do modulo proprio; cronologia; tabela de provas; matriz requisito-prova-risco; prova favoravel e contraria; lacunas e diligencias; analise adversarial; decisao operacional; proxima acao; confianca justificada; e explicacao simples ao cliente quando util.
 
-Escolher uma conclusao: `AJUIZAR AGORA`, `AJUIZAR COM RESSALVA`, `RECORRER ADMINISTRATIVAMENTE`, `FAZER NOVO REQUERIMENTO`, `DILIGENCIAR ANTES`, `REFORMULAR TESE`, `NAO AJUIZAR NO ESTADO ATUAL` ou `ORIENTAR/NEGOCIAR`.
+Escolher uma conclusao: `AJUIZAR AGORA`, `AJUIZAR COM RESSALVA`, `RECORRER ADMINISTRATIVAMENTE`, `RECORRER JUDICIALMENTE`, `NAO RECORRER`, `FAZER NOVO REQUERIMENTO`, `DILIGENCIAR ANTES`, `REFORMULAR TESE`, `NAO AJUIZAR NO ESTADO ATUAL` ou `ORIENTAR/NEGOCIAR`.
+
+`RECORRER JUDICIALMENTE` cobre a fase posterior a decisao ou sentenca — recurso inominado, apelacao, embargos de declaracao, agravo e pedido de uniformizacao —, indicando qual recurso e por qual fundamento. `NAO RECORRER` exige motivo registrado: a decisao de deixar transitar e decisao, nao omissao.
+
+Quando duas rotas correrem em paralelo, registrar a principal e indicar a secundaria em `decisao_paralela`. Caso tipico: recorrer da sentenca e, ao mesmo tempo, protocolar novo requerimento administrativo com a documentacao completa. Nao forcar escolha unica quando o caso comportar as duas.
 
 Sobre a forma da resposta: rotulo tecnico (`FATO COMPROVADO`, `DILIGENCIAR ANTES`, `PRAZO PENDENTE DE CONFERENCIA HUMANA`) fica em caixa alta e sem acento, como neste arquivo. Todo o restante — analise, diagnostico, revisao, peca e minuta — sai em portugues correto, com acentuacao e ortografia; peca e minuta seguem ainda a estrutura forense (enderecamento, qualificacao, fatos, fundamentos, pedidos).

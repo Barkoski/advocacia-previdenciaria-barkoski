@@ -31,7 +31,7 @@ Um conjunto de **travas obrigatórias** — regras que o modelo segue antes de r
 | `AUSÊNCIA DE TEXTO EXTRAÍDO NÃO É AUSÊNCIA DE CONTEÚDO` — página de imagem é página não lida | Tratar prova digitalizada como inexistente |
 | Tabela de provas com conteúdo concreto, página, titular e marcação de conferência | Afirmação sobre documento que ninguém abriu |
 
-A entrega segue estrutura fixa: identidade do caso, inventário e limites de leitura — que em autos extensos vira índice documental com tipo de peça, evento, página e resumo —, cronologia, **tabela de provas**, matriz requisito-prova-risco, análise adversarial, decisão operacional (uma de oito conclusões possíveis, nunca "vai dar certo") e próxima ação. Toda peça sai identificada como **minuta para revisão integral do advogado** — a skill não promete protocolo, resultado ou concessão.
+A entrega segue estrutura fixa: identidade do caso, inventário e limites de leitura — que em autos extensos vira índice documental com tipo de peça, evento, página e resumo —, cronologia, **tabela de provas**, matriz requisito-prova-risco, análise adversarial, decisão operacional (uma de dez conclusões possíveis, nunca "vai dar certo") e próxima ação. Toda peça sai identificada como **minuta para revisão integral do advogado** — a skill não promete protocolo, resultado ou concessão.
 
 **[Veja um exemplo completo de saída](EXEMPLO-DE-ANALISE.md)** — análise de um processo administrativo de aposentadoria rural indeferido, com a tabela de provas preenchida. Caso fictício, dados todos substituídos.
 
