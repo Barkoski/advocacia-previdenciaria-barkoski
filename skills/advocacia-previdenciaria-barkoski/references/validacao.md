@@ -31,7 +31,7 @@ python scripts/previdenciario_tool.py validate caso.json
 
 Tambem oferece `pendencias` e `provas`. Usa somente a biblioteca padrao.
 
-O validador recusa a entrega quando encontra, entre outros: fato comprovado sem documento lido e localizado; documento nao lido dentro da tabela de provas; coluna de conferencia vazia ou `NAO` onde a regra exige `SIM`; inferencia sem base declarada; familia documental ou grau fora do conjunto previsto; norma sem estado de conferencia; prazo incompleto que afirma termo final; marco com data aproximada classificado como comprovado; documento nao lido ausente do bloco de pendencias; e decisao operacional fora das oito.
+O validador recusa a entrega quando encontra, entre outros: fato comprovado sem documento lido e localizado; documento nao lido dentro da tabela de provas; coluna de conferencia vazia ou `NAO` onde a regra exige `SIM`; inferencia sem base declarada; familia documental ou grau fora do conjunto previsto; norma sem estado de conferencia; prazo incompleto que afirma termo final; marco com data aproximada classificado como comprovado; documento nao lido ausente do bloco de pendencias; decisao operacional fora das dez; decisao paralela que repete a principal; e `NAO RECORRER` sem motivo registrado.
 
 ## O que o validador nao faz
 

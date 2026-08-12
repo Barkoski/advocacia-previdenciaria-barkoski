@@ -175,11 +175,55 @@ class PendencyTest(unittest.TestCase):
 
 
 class DecisionTest(unittest.TestCase):
-    def test_operational_decision_must_be_one_of_eight(self):
+    def test_operational_decision_must_be_in_the_closed_set(self):
         data = load_example()
         data["decisao_operacional"] = "Recomendo ajuizar"
         errors, _ = tool.validate(data)
         self.assertTrue(any("decisao_operacional invalida" in e for e in errors))
+
+    def test_judicial_appeal_is_accepted(self):
+        data = load_example()
+        data["decisao_operacional"] = "RECORRER JUDICIALMENTE"
+        errors, _ = tool.validate(data)
+        self.assertEqual(errors, [])
+
+    def test_parallel_route_is_optional(self):
+        data = load_example()
+        self.assertNotIn("decisao_paralela", data)
+        errors, _ = tool.validate(data)
+        self.assertEqual(errors, [])
+
+    def test_parallel_route_is_accepted_when_valid(self):
+        data = load_example()
+        data["decisao_operacional"] = "RECORRER JUDICIALMENTE"
+        data["decisao_paralela"] = "FAZER NOVO REQUERIMENTO"
+        errors, _ = tool.validate(data)
+        self.assertEqual(errors, [])
+
+    def test_parallel_route_must_be_in_the_closed_set(self):
+        data = load_example()
+        data["decisao_paralela"] = "tentar de novo"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("decisao_paralela invalida" in e for e in errors))
+
+    def test_parallel_route_cannot_repeat_the_main_decision(self):
+        data = load_example()
+        data["decisao_paralela"] = data["decisao_operacional"]
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("repete a decisao_operacional" in e for e in errors))
+
+    def test_not_appealing_requires_a_registered_reason(self):
+        data = load_example()
+        data["decisao_operacional"] = "NAO RECORRER"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("exige motivo_decisao" in e for e in errors))
+
+    def test_not_appealing_is_accepted_with_reason(self):
+        data = load_example()
+        data["decisao_operacional"] = "NAO RECORRER"
+        data["motivo_decisao"] = "Sentenca favoravel integralmente; nada a reformar."
+        errors, _ = tool.validate(data)
+        self.assertEqual(errors, [])
 
     def test_requirement_state_must_be_valid(self):
         data = load_example()
