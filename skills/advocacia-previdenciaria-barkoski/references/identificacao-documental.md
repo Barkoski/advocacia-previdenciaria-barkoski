@@ -171,7 +171,8 @@ Este e o formato que o validador de [validacao.md](validacao.md) verifica. Exemp
       "termo_final": "?", "fonte": "D1", "situacao": "PRAZO PENDENTE DE CONFERENCIA HUMANA"
     }
   ],
-  "conclusao": "", "decisao_operacional": "", "proxima_acao": "", "confianca": "",
+  "conclusao": "", "decisao_operacional": "", "decisao_paralela": "",
+  "motivo_decisao": "", "proxima_acao": "", "confianca": "",
   "pendencias": { "nao_lidos": [], "sem_localizacao": [], "confirmar": [], "estranhos_ao_caso": [] }
 }
 ```
@@ -182,7 +183,7 @@ Conjuntos fechados, verificados pelo validador:
 - `situacao` do requisito: `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO`, `NAO APLICAVEL`, `?`.
 - `qualidade_da_leitura`: `TEXTO NITIDO`, `OCR DUVIDOSO`, `LEITURA PARCIAL`, `ILEGIVEL`, `NAO LIDO`.
 - `estado` da norma: `FONTE OFICIAL CONSULTADA AGORA`, `ARQUIVO OFICIAL CAPTURADO`, `ACERVO LOCALIZADOR`, `PESQUISA OFICIAL PENDENTE`, `DE MEMORIA - CONFIRMAR EM FONTE OFICIAL`.
-- `decisao_operacional`: uma das oito da entrega padrao do SKILL.md.
+- `decisao_operacional`: uma das dez da entrega padrao do SKILL.md. `decisao_paralela` e opcional, usa o mesmo conjunto e nao pode repetir a principal. `NAO RECORRER` exige `motivo_decisao` preenchido.
 - `conferir`: `SIM` ou `NAO`, e obrigatoriamente `SIM` quando a qualidade nao for `TEXTO NITIDO`, quando faltar localizacao, ou quando o titular nao for a parte.
 
 Regras de coerencia que o validador recusa violar: `FATO COMPROVADO` exige documento lido e com localizacao; documento `NAO LIDO` nao entra em `provas`; `INFERENCIA` exige `base_inferencia`; prazo com elemento ausente exige `situacao` pendente e nao pode afirmar `termo_final`; marco com data em `~` sai como `ALEGACAO`; documento nao lido, sem localizacao, de confianca `BAIXA` ou estranho ao caso precisa constar do bloco de pendencia correspondente.

@@ -48,8 +48,9 @@ VALID_NORM_STATES = {
 }
 VALID_OPERATIONAL_DECISIONS = {
     "AJUIZAR AGORA", "AJUIZAR COM RESSALVA", "RECORRER ADMINISTRATIVAMENTE",
-    "FAZER NOVO REQUERIMENTO", "DILIGENCIAR ANTES", "REFORMULAR TESE",
-    "NAO AJUIZAR NO ESTADO ATUAL", "ORIENTAR/NEGOCIAR",
+    "RECORRER JUDICIALMENTE", "NAO RECORRER", "FAZER NOVO REQUERIMENTO",
+    "DILIGENCIAR ANTES", "REFORMULAR TESE", "NAO AJUIZAR NO ESTADO ATUAL",
+    "ORIENTAR/NEGOCIAR",
 }
 PENDING_DEADLINE = "PRAZO PENDENTE DE CONFERENCIA HUMANA"
 PENDENCY_BLOCKS = ("nao_lidos", "sem_localizacao", "confirmar", "estranhos_ao_caso")
@@ -333,6 +334,14 @@ def validate(data: dict) -> "tuple[list, list]":
     decision = data.get("decisao_operacional")
     if decision not in VALID_OPERATIONAL_DECISIONS:
         errors.append("decisao_operacional invalida: " + str(decision))
+    parallel = data.get("decisao_paralela")
+    if not _is_blank(parallel):
+        if parallel not in VALID_OPERATIONAL_DECISIONS:
+            errors.append("decisao_paralela invalida: " + str(parallel))
+        elif parallel == decision:
+            errors.append("decisao_paralela repete a decisao_operacional")
+    if decision == "NAO RECORRER" and _is_blank(data.get("motivo_decisao")):
+        errors.append("NAO RECORRER exige motivo_decisao")
     if _is_blank(data.get("proxima_acao")):
         errors.append("proxima_acao vazia")
 
