@@ -1,0 +1,58 @@
+name: Melhoria na skill
+description: Propor regra, módulo, trava ou verificação nova
+labels: ["melhoria"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Não cole dados de caso real.** Descreva o caso que motivou a proposta sem identificar ninguém.
+
+        Texto acrescentado custa contexto em toda análise que carregar o módulo. Proposta com motivo concreto tem prioridade sobre preferência de estilo.
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Que problema isso resolve
+      description: De preferência, um caso real que expôs a falha, descrito de forma anonimizada. O que a skill entregou de errado ou deixou de entregar?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Proposta
+      description: A regra ou verificação que você sugere. Se for texto de módulo, escreva a redação exata.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - Regra ou trava nova no SKILL.md
+        - Módulo novo em references/
+        - Ajuste em módulo existente
+        - Verificação nova no validador
+        - Conjunto fechado (família, grau, situação, decisão)
+        - Documentação
+    validations:
+      required: true
+
+  - type: textarea
+    id: verificavel
+    attributes:
+      label: Dá para verificar por código?
+      description: Se a regra for decidível por máquina, diga como o validador poderia recusar quem a violar. Se não for, diga por quê.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Não incluí dado de caso real nesta issue.
+          required: true
+        - label: Se a proposta mexe em conjunto fechado, li a tabela de pontos a atualizar no CONTRIBUTING.
+          required: false
