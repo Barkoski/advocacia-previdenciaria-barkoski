@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Vazamento de sigilo, falso verde do validador ou trava contornável
+    url: https://github.com/Barkoski/advocacia-previdenciaria-barkoski/security/advisories/new
+    about: Não abra issue pública. Use o relato privado de vulnerabilidade.
+  - name: Dúvida de uso ou personalização para o seu escritório
+    url: https://github.com/Barkoski/advocacia-previdenciaria-barkoski#personalizar-para-o-seu-escritório
+    about: O README explica a instalação, o roteamento de módulos e como adaptar a skill.
