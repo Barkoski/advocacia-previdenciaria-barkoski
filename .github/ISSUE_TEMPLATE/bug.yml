@@ -1,0 +1,63 @@
+name: Comportamento errado
+description: A skill afirmou algo sem lastro, ignorou uma trava, ou o validador errou
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Antes de tudo: não cole dados de caso real.** Nada de nome, CPF, NB, número de processo, endereço, dado clínico ou trecho de autos. Descreva o padrão ou monte um exemplo fictício.
+
+        Se o problema for vazamento de sigilo, falso verde do validador ou trava contornável por conteúdo dos autos, **não abra issue** — use o relato privado em *Security*. Ver [SECURITY.md](../blob/master/SECURITY.md).
+
+  - type: textarea
+    id: o-que-aconteceu
+    attributes:
+      label: O que aconteceu
+      description: O comportamento observado, com o texto que a skill produziu, já anonimizado.
+    validations:
+      required: true
+
+  - type: textarea
+    id: o-que-deveria
+    attributes:
+      label: O que deveria ter acontecido
+      description: Qual trava ou regra foi contrariada. Cite o módulo e o trecho, se souber.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducao
+    attributes:
+      label: Como reproduzir
+      description: O pedido que você fez, o tipo de material envolvido (PDF nato-digital, escaneado, extrato do PJe) e o que veio antes na conversa.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: onde
+    attributes:
+      label: Onde ocorreu
+      options:
+        - Claude Code
+        - Claude Desktop
+        - claude.ai
+        - Claude Cowork
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: versao
+    attributes:
+      label: Versão da skill
+      description: Veja em .claude-plugin/plugin.json, ou diga a data em que instalou.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Não incluí dado de caso real nesta issue.
+          required: true
