@@ -1,6 +1,6 @@
-# Uso no Claude Code (modulo de operacao)
+# Uso no ambiente de agentes (modulo de operacao)
 
-Traduz as travas do SKILL.md em regras de uso das ferramentas deste ambiente. Le apenas quando a tarefa envolver arquivo, PDF, acervo local, pesquisa externa, subagente ou entrega em arquivo.
+Traduz as travas do SKILL.md em regras de uso das ferramentas disponiveis em Claude Code, Codex ou ambiente equivalente. Le apenas quando a tarefa envolver arquivo, PDF, acervo local, pesquisa externa, subagente ou entrega em arquivo.
 
 ## Leitura de arquivo e PDF
 
@@ -11,7 +11,7 @@ Traduz as travas do SKILL.md em regras de uso das ferramentas deste ambiente. Le
 - **Mapear antes de ler em profundidade**: buscar o identificador de anexo no rodape para descobrir onde comeca cada documento, e buscar `INDEFER`, `EXIGENCIA`, `DESPACHO`, `ANALISE`, `CNIS`, `DER`, `AUTODECLARACAO`, `DESCRITIVO`. So depois abrir as faixas relevantes e o entorno.
 - Ler por faixa de paginas e registrar quais faixas foram lidas. Declarar `LEITURA PARCIAL` para o restante. Nunca tratar pagina nao lida como inexistente.
 - Citar sempre como o arquivo mostra: nome do arquivo + pagina (ou evento/ID do PJe quando existir). Se a numeracao do PDF divergir da dos autos, dizer as duas ou marcar `PAGINA NAO IDENTIFICADA`.
-- Pagina de imagem decisiva: renderizar e ler visualmente, ou encaminhar para OCR local. Marcar `OCR DUVIDOSO` ou `ILEGIVEL` em vez de reconstruir. Para conferencia visual pelo advogado, oferecer a skill `pdf-viewer:view-pdf`.
+- Pagina de imagem decisiva: renderizar e ler visualmente, ou encaminhar para OCR local. Marcar `OCR DUVIDOSO` ou `ILEGIVEL` em vez de reconstruir. Para conferencia pelo advogado, usar o visualizador ou renderizador efetivamente disponivel. Sem visualizador integrado, gerar imagem da pagina localmente ou indicar a pagina exata no PDF original.
 - Inventario primeiro, conforme [analise-de-caso.md](analise-de-caso.md), e tabela de provas conforme [tabela-de-provas.md](tabela-de-provas.md).
 
 ## Acervos locais do escritorio
@@ -44,7 +44,7 @@ A distincao que decide o caso concreto e entre **ler** e **enviar**:
 ## Entrega
 
 - Analise, diagnostico e revisao: responder no chat.
-- Minuta de peca: escrever em arquivo `.md` ou `.docx` (skill `docx`) quando o advogado pedir arquivo, e informar caminho. Toda minuta sai rotulada como minuta para revisao integral, com os pontos pendentes marcados em `[ ]` no proprio texto — placeholder visivel, nunca dado inventado.
+- Minuta de peca: escrever em arquivo `.md` ou `.docx` quando o advogado pedir arquivo, usando a ferramenta documental efetivamente disponivel, e informar caminho. Toda minuta sai rotulada como minuta para revisao integral, com os pontos pendentes marcados em `[ ]` no proprio texto — placeholder visivel, nunca dado inventado.
 - Nao criar, mover ou apagar arquivo em pasta de caso sem pedido expresso. Rascunho e teste vao para o scratchpad da sessao.
 - Nao acionar subagente (`Agent`) por conta propria. Analise de autos exige a cadeia de citacao que se perde no resumo do subagente.
 

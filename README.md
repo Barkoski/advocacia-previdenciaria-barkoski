@@ -1,6 +1,6 @@
 # Advocacia Previdenciária Barkoski
 
-Skill para Claude que estrutura a análise, estratégia e redação de casos de **Direito Previdenciário brasileiro** — com rastreabilidade documental, matriz requisito-prova-risco e análise adversarial, em vez de resposta genérica de "assistente jurídico".
+Skill para Claude Code, Claude Cowork e Codex que estrutura a análise, estratégia e redação de casos de **Direito Previdenciário brasileiro** — com rastreabilidade documental, matriz requisito-prova-risco e análise adversarial, em vez de resposta genérica de "assistente jurídico".
 
 Construída por [Lucas Barkoski](https://github.com/Barkoski), advogado previdenciarista (OAB/MT 28.362, OAB/PR 135.987), a partir da prática real com processos de INSS, PJe e JEF.
 
@@ -52,8 +52,21 @@ A coluna **Conferir** nunca vem toda como "não": documento lido de página digi
 ```
 skills/advocacia-previdenciaria-barkoski/
 ├── SKILL.md                          # travas obrigatórias, ordem de controle, roteamento de módulos
+├── agents/
+│   └── openai.yaml                   # metadados e invocação no Codex
+├── scripts/
+│   └── previdenciario_tool.py        # validador determinístico, sem dependências externas
 └── references/
     ├── analise-de-caso.md            # fluxo obrigatório de leitura e diagnóstico
+    ├── analise-de-decisao.md         # sentença, acórdão e decisão do CRPS; viabilidade recursal
+    ├── anonimizacao.md               # anonimizar antes de uso externo ou publicação
+    ├── audiencia-e-pericia.md        # preparo de audiência, justificação, perícia médica e social
+    ├── calculos-previdenciarios.md   # cálculo e conferência de tempo e valores
+    ├── checklists-por-peca.md        # checklist por tipo de peça
+    ├── etica-publicidade.md          # ética na publicidade da advocacia
+    ├── manual-de-redacao.md          # padrão de redação da peça
+    ├── motor-de-prazo.md             # método de contagem de prazo processual (conferência manual)
+    ├── saida-json.md                 # contrato JSON de saída (validado pelo script)
     ├── identificacao-documental.md   # índice de peças, tipo documental, FIRAC+ e triagem
     ├── validacao.md                  # checklist humano e validador determinístico
     ├── padrao-de-evidencia.md        # formato de citação e matriz requisito-prova-risco
@@ -117,6 +130,10 @@ cp -r advocacia-previdenciaria-barkoski/skills/advocacia-previdenciaria-barkoski
 
 A skill dispara sozinha ao tratar de PDF de processo, INSS, CNIS, PJe, aposentadoria, BPC ou pensão — ou pode ser chamada direto com `/advocacia-previdenciaria-barkoski`.
 
+### Codex
+
+A pasta da skill inclui `agents/openai.yaml` e pode ser instalada pelo mecanismo de skills disponível no Codex. Na instalação manual, copie `skills/advocacia-previdenciaria-barkoski` para a pasta `skills` do diretório de configuração do Codex e reinicie o aplicativo. A invocação explícita é `$advocacia-previdenciaria-barkoski`; a seleção automática permanece habilitada.
+
 ### Claude Cowork
 
 O Cowork instala por arquivo `.plugin`, que é um ZIP com o `.claude-plugin/plugin.json` **na raiz do arquivo compactado** — não dentro de uma subpasta. É o erro mais comum: compactar a pasta do projeto gera um ZIP inválido.
@@ -130,7 +147,7 @@ Se a pasta `.claude-plugin` não aparecer na seleção, ative a exibição de it
 
 ## O que a skill precisa para funcionar de verdade
 
-A skill é texto — instruções, não código. Roda em qualquer Claude com acesso aos arquivos, sem instalar mais nada.
+A skill é composta principalmente por instruções em texto e inclui um validador opcional em Python. A análise funciona em ambiente compatível com skills e acesso aos arquivos; o validador usa apenas a biblioteca padrão.
 
 **Só que processo previdenciário é PDF grande e escaneado**, e é aí que a coisa trava. Vale saber disto antes de concluir que "não funcionou":
 
@@ -146,7 +163,7 @@ Se a leitura nativa falhar no seu ambiente, é isso que resolve. O módulo `rag-
 
 **OCR em volume.** Processo com centenas de páginas escaneadas pede OCR. Ferramenta local é preferível a serviço em nuvem: mantém os autos na máquina, o que atende à regra de sigilo do módulo `privacidade-e-sigilo.md`.
 
-**Nenhum outro plugin é necessário.** A skill não depende de conectores, integrações ou pacotes de outras áreas.
+**Nenhum outro plugin é obrigatório.** Visualizador de PDF, OCR local e conectores podem ampliar a leitura, mas a skill sempre deve verificar o que existe e oferecer alternativa quando a ferramenta preferida não estiver disponível.
 
 ## Personalizar para o seu escritório
 
@@ -188,11 +205,11 @@ esperando minha resposta antes de seguir:
    que existe e como usar?
 8. Alguma outra política do escritório que a IA deveria seguir sempre?
 
-Ao fim da etapa 1, me pergunte se quero seguir para o fine-tuning por matéria
+Ao fim da etapa 1, me pergunte se quero seguir para a personalização por matéria
 (ETAPA 2) ou parar. Se eu parar, mostre o configuracao-barkoski.md final e peça
 minha confirmação antes de salvar.
 
-ETAPA 2 — Fine-tuning por matéria (só se eu pedir). Faça bloco por bloco,
+ETAPA 2 — Personalização por matéria (só se eu pedir). Faça bloco por bloco,
 esperando minha resposta antes do próximo:
 
 ANÁLISE GERAL
@@ -290,7 +307,7 @@ Se você não tem paciência para a entrevista — ou se acha difícil descrever
 
 Costuma ser mais fiel que a autodeclaração. A maioria das pessoas descreve mal o próprio jeito de redigir, mas o jeito está visível no trabalho pronto.
 
-**Antes de começar, sobre sigilo:** use peça já protocolada ou com os dados do cliente removidos. Nome, CPF, NB e número de processo não interessam para o que se quer extrair — o objeto é a forma, não o caso. Rodando em Claude Code na sua máquina, os arquivos não saem dela; ainda assim, anonimizar é o hábito certo.
+**Antes de começar, sobre sigilo:** use peça já protocolada ou com os dados do cliente removidos. Nome, CPF, NB e número de processo não interessam para o que se quer extrair — o objeto é a forma, não o caso. Mesmo quando as ferramentas são executadas localmente, o conteúdo necessário à interação com o modelo pode ser enviado ao provedor configurado; retenção e uso dependem do produto, da conta e das configurações vigentes. Verifique essas condições e anonimizar antes continua sendo o hábito certo. Consulte a [documentação de uso de dados do Claude Code](https://code.claude.com/docs/en/data-usage) e a documentação do provedor utilizado.
 
 **Escolha das peças:** 3 ou 4, de tipos e matérias diferentes (uma inicial, um recurso, uma impugnação; se possível, matérias distintas). Duas peças do mesmo tipo produzem padrões frágeis — o que parece estilo do escritório pode ser exigência daquele tipo de caso.
 
@@ -299,8 +316,9 @@ Você vai aprender o estilo de trabalho do meu escritório lendo peças que eu m
 escrevi, em vez de eu responder um questionário.
 
 Sigilo: as peças podem conter dados de cliente. Não repita nome, CPF, NB ou número
-de processo em nenhuma saída sua — o que interessa é a forma, não o caso. Não envie
-nada para fora da máquina.
+de processo em nenhuma saída sua — o que interessa é a forma, não o caso. Não use
+ferramentas externas adicionais nem compartilhe o material com terceiros além do
+provedor do modelo previamente autorizado; prefira peças anonimizadas.
 
 PASSO 1 — Leia as peças que eu indicar.
 

@@ -1,6 +1,6 @@
 # Tabela de provas
 
-Toda analise de autos entrega esta tabela. Ela existe para que o advogado consiga ir ao documento e conferir cada linha na fonte, sem reler o processo inteiro.
+Analise completa de autos entrega esta tabela; resposta pontual pode apresentar apenas a prova pertinente com fonte e limite. Ela existe para que o advogado consiga ir ao documento e conferir cada linha na fonte, sem reler o processo inteiro.
 
 Uma prova so entra na tabela depois de lida. Documento que aparece no indice de anexos mas nao foi aberto **nao vira linha da tabela**: vai para a lista de pendencias de leitura.
 
@@ -41,7 +41,7 @@ Marcar **SIM** obrigatoriamente quando: o documento foi lido de pagina digitaliz
 
 Na pratica, quase toda linha e `SIM`. Isso e deliberado: a tabela e roteiro de conferencia, nao certificado de veracidade.
 
-Ao final da tabela, repetir em uma linha: **nenhuma linha desta tabela foi conferida na fonte pelo advogado. A tabela e roteiro de conferencia.**
+Ao final da tabela, repetir em uma linha: **A tabela e roteiro de conferencia. Informar quais itens tiveram revisao humana expressamente registrada; na ausencia desse registro, revisao humana nao informada.**
 
 ## Blocos que acompanham a tabela
 

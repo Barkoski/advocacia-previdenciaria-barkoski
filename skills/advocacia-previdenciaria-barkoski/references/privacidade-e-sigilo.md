@@ -12,7 +12,7 @@ Nao presumir que login, pasta conectada ou navegador aberto equivale a autorizac
 
 ## Minimizacao
 
-Antes de uso externo autorizado, enviar somente o indispensavel. Remover ou mascarar CPF, RG, endereco, telefone, e-mail, NB, numero processual, nome de terceiro e dados clinicos nao essenciais. Informar o que sera compartilhado, para qual finalidade e por qual meio.
+Antes de uso externo autorizado, enviar somente o indispensavel. O procedimento de remocao esta em [anonimizacao.md](anonimizacao.md), com duas passadas e relatorio do que saiu. Remover ou mascarar CPF, RG, endereco, telefone, e-mail, NB, numero processual, nome de terceiro e dados clinicos nao essenciais. Informar o que sera compartilhado, para qual finalidade e por qual meio.
 
 ## Isolamento e saida
 

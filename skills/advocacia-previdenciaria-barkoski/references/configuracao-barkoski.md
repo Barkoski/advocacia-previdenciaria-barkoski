@@ -1,8 +1,8 @@
 # Configuracao do escritorio
 
-Este e o ponto de customizacao da skill. As regras abaixo refletem a pratica de um escritorio especifico e podem ser substituidas pelas do escritorio que estiver usando: pela `## Ordem de controle` do SKILL.md, esta configuracao tem prioridade sobre o comportamento padrao dos demais modulos.
+Este e o ponto de customizacao da skill. As regras abaixo refletem a pratica de um escritorio especifico e podem ser substituidas pelas do escritorio que estiver usando. Pela `## Ordem de controle` do SKILL.md, esta configuracao prevalece sobre padroes operacionais e preferencias dos demais modulos, mas nunca sobre as travas obrigatorias.
 
-Preferencias adicionais entram como subsecoes novas (`## Preferencias — ...`). O que nao pode ser afrouxado por aqui sao as travas de rastreabilidade e de sigilo: nenhuma preferencia autoriza afirmar fato sem fonte, citar lei ou julgado sem conferencia, fechar prazo sem marco inicial, ou enviar dado de cliente para fora sem autorizacao expressa.
+Preferencias adicionais entram como subsecoes novas (`## Preferencias — ...`). Nao podem ser afrouxadas por aqui as travas de veracidade, rastreabilidade, sigilo, prazo, calculo, fonte oficial e bloqueio de protocolo. Nenhuma preferencia autoriza afirmar fato sem fonte, citar lei ou julgado sem conferencia, fechar prazo sem marco inicial, inventar calculo ou enviar dado de cliente para fora sem autorizacao expressa.
 
 ## Escopo e prioridade
 

@@ -46,7 +46,7 @@ class FactGradeTest(unittest.TestCase):
 
     def test_proven_fact_rejects_unread_document(self):
         data = load_example()
-        find(data, "fatos", "F1")["documentos"] = ["D4"]
+        find(data, "fatos", "F1")["documentos"] = ["D5"]
         errors, _ = tool.validate(data)
         self.assertTrue(any("documento nao lido" in e for e in errors))
 
@@ -64,7 +64,7 @@ class FactGradeTest(unittest.TestCase):
 
     def test_inference_requires_basis(self):
         data = load_example()
-        find(data, "fatos", "F3")["base_inferencia"] = ""
+        find(data, "fatos", "F4")["base_inferencia"] = ""
         errors, _ = tool.validate(data)
         self.assertTrue(any("inferencia sem base_inferencia" in e for e in errors))
 
@@ -78,19 +78,19 @@ class FactGradeTest(unittest.TestCase):
 class EvidenceTableTest(unittest.TestCase):
     def test_unread_document_cannot_enter_table(self):
         data = load_example()
-        find(data, "provas", "P1")["documento"] = "D4"
+        find(data, "provas", "P1")["documento"] = "D5"
         errors, _ = tool.validate(data)
         self.assertTrue(any("nao entra na tabela de provas" in e for e in errors))
 
     def test_confirm_is_mandatory_for_doubtful_ocr(self):
         data = load_example()
-        find(data, "provas", "P1")["conferir"] = "NAO"
+        find(data, "provas", "P2")["conferir"] = "NAO"
         errors, _ = tool.validate(data)
         self.assertTrue(any("conferir deve ser SIM" in e for e in errors))
 
     def test_confirm_is_mandatory_for_third_party_holder(self):
         data = load_example()
-        find(data, "provas", "P2")["conferir"] = "NAO"
+        find(data, "provas", "P1")["conferir"] = "NAO"
         errors, _ = tool.validate(data)
         self.assertTrue(any("conferir deve ser SIM" in e for e in errors))
 
@@ -116,7 +116,7 @@ class DocumentTest(unittest.TestCase):
 
     def test_read_flag_must_match_quality(self):
         data = load_example()
-        find(data, "documentos", "D4")["lido"] = True
+        find(data, "documentos", "D5")["lido"] = True
         errors, _ = tool.validate(data)
         self.assertTrue(any("se contradizem" in e for e in errors))
 
@@ -147,11 +147,20 @@ class NormAndDeadlineTest(unittest.TestCase):
         errors, _ = tool.validate(data)
         self.assertTrue(any("termo_final afirmado" in e for e in errors))
 
-    def test_approximate_mark_must_be_allegation(self):
+    def test_approximate_date_alone_does_not_define_grade(self):
+        # A regra "data aproximada deve ser ALEGACAO" foi removida do validador:
+        # a precisao temporal nao determina a natureza probatoria. O marco com
+        # fonte e localizacao pode ser FATO COMPROVADO mesmo com data "~".
         data = load_example()
         data["marcos"][1]["grau"] = "FATO COMPROVADO"
         errors, _ = tool.validate(data)
-        self.assertTrue(any("data aproximada" in e for e in errors))
+        self.assertEqual(errors, [])
+
+    def test_proven_mark_requires_source_and_location(self):
+        data = load_example()
+        data["marcos"][0]["localizacao"] = "?"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("marco comprovado exige fonte e localizacao" in e for e in errors))
 
 
 class PendencyTest(unittest.TestCase):
@@ -184,12 +193,13 @@ class DecisionTest(unittest.TestCase):
     def test_judicial_appeal_is_accepted(self):
         data = load_example()
         data["decisao_operacional"] = "RECORRER JUDICIALMENTE"
+        data["decisao_paralela"] = "RECORRER ADMINISTRATIVAMENTE"
         errors, _ = tool.validate(data)
         self.assertEqual(errors, [])
 
     def test_parallel_route_is_optional(self):
         data = load_example()
-        self.assertNotIn("decisao_paralela", data)
+        del data["decisao_paralela"]
         errors, _ = tool.validate(data)
         self.assertEqual(errors, [])
 
@@ -230,6 +240,56 @@ class DecisionTest(unittest.TestCase):
         find(data, "requisitos", "R1")["situacao"] = "quase comprovado"
         errors, _ = tool.validate(data)
         self.assertTrue(any("situacao invalida" in e for e in errors))
+
+
+class AuditFindingsTest(unittest.TestCase):
+    """Achados da auditoria: cada teste muta o exemplo valido e exige o erro especifico."""
+
+    def test_finding_02_proven_requirement_cannot_rest_only_on_allegation(self):
+        data = load_example()
+        requirement = find(data, "requisitos", "R1")
+        requirement["situacao"] = "COMPROVADO"
+        requirement["fatos"] = ["F5"]  # F5 e ALEGACAO
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("R1: requisito comprovado sustentado apenas por fato de natureza ALEGACAO" in e for e in errors))
+
+    def test_finding_02_proven_requirement_with_a_proven_fact_is_accepted(self):
+        data = load_example()
+        requirement = find(data, "requisitos", "R1")
+        requirement["situacao"] = "COMPROVADO"
+        requirement["fatos"] = ["F2", "F5"]
+        errors, _ = tool.validate(data)
+        self.assertEqual(errors, [])
+
+    def test_finding_03_deadline_with_not_informed_element_is_not_confirmed(self):
+        data = load_example()
+        deadline = data["prazos"][0]
+        deadline["termo_inicial"] = "NAO INFORMADO"
+        deadline["situacao"] = "OK"
+        deadline["termo_final"] = "30/09/2026"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("prazo 1: elemento ausente exige situacao" in e for e in errors))
+        self.assertTrue(any("prazo 1: termo_final afirmado sem elementos confirmados" in e for e in errors))
+
+    def test_finding_04_illegible_document_cannot_support_proven_fact(self):
+        data = load_example()
+        document = find(data, "documentos", "D1")
+        document["qualidade_da_leitura"] = "ILEGIVEL"
+        document["lido"] = True
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("F1: fato comprovado apoiado em documento ilegivel: D1" in e for e in errors))
+
+    def test_finding_05_mark_source_with_nonexistent_document_id(self):
+        data = load_example()
+        data["marcos"][0]["fonte"] = "D999"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("marco 1: fonte cita documento inexistente: D999" in e for e in errors))
+
+    def test_finding_05_fact_origin_with_nonexistent_document_id(self):
+        data = load_example()
+        find(data, "fatos", "F1")["origem"] = "D999, p. 3"
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("F1: origem cita documento inexistente: D999" in e for e in errors))
 
 
 class CommandTest(unittest.TestCase):

@@ -15,7 +15,7 @@ A validacao tem duas camadas. A primeira e humana e vale sempre. A segunda e mec
 7. Nenhum numero que va para peca ou calculo foi produzido de cabeca.
 8. A prova contraria e a melhor tese do INSS foram enfrentadas.
 9. Os documentos internos do INSS foram confrontados entre si.
-10. Ha decisao operacional entre as oito, proxima acao e limite de confianca.
+10. Ha decisao operacional entre as dez, proxima acao e limite de confianca.
 11. Nenhum dado de cliente saiu para servico externo sem autorizacao expressa nesta conversa.
 12. Os blocos de pendencia existem, inclusive quando vazios.
 
@@ -23,7 +23,7 @@ Falhou algum item: corrigir e repetir a lista. Nao chamar a entrega de completa 
 
 ## Camada 2 — validador
 
-Quando o caso estiver estruturado conforme o JSON de [identificacao-documental.md](identificacao-documental.md) e houver Python disponivel:
+Quando o caso estiver estruturado conforme o JSON de [saida-json.md](saida-json.md) e houver Python disponivel:
 
 ```text
 python scripts/previdenciario_tool.py validate caso.json

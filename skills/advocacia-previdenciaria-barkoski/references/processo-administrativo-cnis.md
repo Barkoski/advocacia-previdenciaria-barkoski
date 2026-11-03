@@ -33,3 +33,11 @@ Nao atribuir significado a indicador sem fonte oficial efetivamente consultada. 
 ## Saida
 
 Entregar diagnostico administrativo, quadro CNIS/CTPS, pontos aproveitaveis, correcoes/provas necessarias, risco contrario e estrategia entre recurso, novo requerimento, justificacao administrativa ou acao judicial.
+
+## Precisao de origem e escopo
+
+Separe suporte documental de conferencia: `ORIGINAL CONFERIDO`, `SOMENTE TRANSCRICAO`, `RELATADO NA CONVERSA`, `NAO LIDO`. Leitura de transcricao nao e conferencia do PDF. Registre trecho e localizacao por afirmacao decisiva, paginas examinadas e revisao humana separada. Documento registra primeiro o que seu autor afirmou; nao transforma a narrativa em verdade automaticamente.
+
+Data parcial ou aproximada nao e, por si, alegacao: preserve a precisao literal e avalie a natureza da fonte. Documento de terceiro requer pertinencia e alcance justificados, sem descarte nem extensao automaticos. Ausencia em busca seletiva significa nao localizado no material examinado, nao inexistente.
+
+Se pedida transcricao literal de CNIS/CTPS, preserve cada pagina, linha, indicador e competencia, separando normalizacao de texto original. Nao substitua por resumo. Carencia, tempo e qualidade de segurado sao apuracoes distintas; concomitancias nao autorizam duplicar dias.

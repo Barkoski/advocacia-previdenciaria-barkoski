@@ -60,7 +60,7 @@ Confianca baixa nao impede o registro; gera item em `confirmar antes de usar`.
 
 `qualidade_da_leitura`: `TEXTO NITIDO`, `OCR DUVIDOSO`, `LEITURA PARCIAL`, `ILEGIVEL` ou `NAO LIDO`.
 
-`titular` e campo obrigatorio: em nome de quem o documento foi emitido, com CPF ou NB quando visivel. Documento em nome de terceiro sustenta prova por extensao, nunca prova direta — e e onde o INSS ataca primeiro. Desconhecido e `?`; nunca presumir que seja do requerente.
+`titular` e campo obrigatorio: em nome de quem o documento foi emitido, com CPF ou NB quando visivel. Documento de terceiro exige pertinencia e alcance justificados; nao autoriza extensao nem descarte automaticos. Desconhecido e `?`; nunca presumir que seja do requerente.
 
 Divergencia de pessoa, CPF, NB, especie ou periodo: registrar `POSSIVEL DOCUMENTO ESTRANHO AO CASO` com o motivo objetivo.
 
@@ -104,7 +104,7 @@ Antes da cronologia, isolar os marcos que decidem o caso, cada um com fonte e pa
 | Marco | Data | Fonte | Localizacao | Grau |
 |---|---|---|---|---|
 
-Data aproximada vem com `~` e grau rebaixado para `ALEGACAO`, salvo documento que a confirme. Periodo em aberto se escreve `desde 03/2019` ou `ate 12/2020`; nao fechar intervalo por conta propria.
+Data aproximada preserva sua precisao original; natureza probatoria depende da fonte, nao da existencia de dia/mes exatos. Periodo em aberto se escreve `desde 03/2019` ou `ate 12/2020`; nao fechar intervalo por conta propria.
 
 ## Analise apos o indice
 
@@ -121,74 +121,7 @@ Com o indice fechado, seguir para [analise-de-caso.md](analise-de-caso.md) e [pa
 
 ## Saida em JSON
 
-Somente quando o advogado pedir saida estruturada para planilha, base ou automacao. Sem pedido expresso, entregar em texto e tabela.
-
-Este e o formato que o validador de [validacao.md](validacao.md) verifica. Exemplo completo e valido em `examples/caso-ficticio.json`.
-
-```json
-{
-  "schema_version": "1.0",
-  "caso": {
-    "parte": "", "cpf": "?", "especie": "", "nb": "?", "der": "?",
-    "processo_ou_protocolo": "?", "fase": "", "data_referencia": ""
-  },
-  "triagem": {
-    "tipo_procedimento": "", "assunto_principal": "", "questao_central": "",
-    "pontos_controvertidos": [], "fundamento_do_indeferimento": "?",
-    "palavras_chave": [], "normas_invocadas": [], "origem": ""
-  },
-  "documentos": [
-    {
-      "id": "D1", "familia": "", "tipo": "", "titular": "?",
-      "evento_inicio": "?", "pagina_inicio": "?",
-      "evento_fim": "?", "pagina_fim": "?", "data": "?",
-      "localizacao": "", "resumo": "", "criterio_delimitacao": "",
-      "confianca_identificacao": "", "qualidade_da_leitura": "", "lido": true,
-      "documento_estranho": false, "motivo_divergencia": ""
-    }
-  ],
-  "fatos": [
-    {
-      "id": "F1", "enunciado": "", "data": "?", "grau": "",
-      "documentos": ["D1"], "base_inferencia": "", "origem": ""
-    }
-  ],
-  "provas": [
-    { "id": "P1", "documento": "D1", "o_que_prova": "", "requisito": "R1", "conferir": "SIM" }
-  ],
-  "requisitos": [
-    {
-      "id": "R1", "enunciado": "", "situacao": "", "fatos": ["F1"],
-      "prova_necessaria": "", "favoravel": "", "contraria": "",
-      "lacuna": "", "risco": "", "providencia": ""
-    }
-  ],
-  "marcos": [{ "marco": "", "data": "?", "fonte": "D1", "localizacao": "?", "grau": "" }],
-  "normas": [{ "referencia": "", "estado": "", "origem": "" }],
-  "prazos": [
-    {
-      "ato": "", "termo_inicial": "?", "forma_ciencia": "?", "regra_contagem": "?",
-      "termo_final": "?", "fonte": "D1", "situacao": "PRAZO PENDENTE DE CONFERENCIA HUMANA"
-    }
-  ],
-  "conclusao": "", "decisao_operacional": "", "decisao_paralela": "",
-  "motivo_decisao": "", "proxima_acao": "", "confianca": "",
-  "pendencias": { "nao_lidos": [], "sem_localizacao": [], "confirmar": [], "estranhos_ao_caso": [] }
-}
-```
-
-Conjuntos fechados, verificados pelo validador:
-
-- `grau` do fato e do marco: `FATO COMPROVADO`, `ALEGACAO`, `INFERENCIA`, `CONCLUSAO JURIDICA`.
-- `situacao` do requisito: `COMPROVADO`, `PARCIALMENTE COMPROVADO`, `CONTROVERTIDO`, `NAO COMPROVADO`, `NAO APLICAVEL`, `?`.
-- `qualidade_da_leitura`: `TEXTO NITIDO`, `OCR DUVIDOSO`, `LEITURA PARCIAL`, `ILEGIVEL`, `NAO LIDO`.
-- `estado` da norma: `FONTE OFICIAL CONSULTADA AGORA`, `ARQUIVO OFICIAL CAPTURADO`, `ACERVO LOCALIZADOR`, `PESQUISA OFICIAL PENDENTE`, `DE MEMORIA - CONFIRMAR EM FONTE OFICIAL`.
-- `decisao_operacional`: uma das dez da entrega padrao do SKILL.md. `decisao_paralela` e opcional, usa o mesmo conjunto e nao pode repetir a principal. `NAO RECORRER` exige `motivo_decisao` preenchido.
-- `conferir`: `SIM` ou `NAO`, e obrigatoriamente `SIM` quando a qualidade nao for `TEXTO NITIDO`, quando faltar localizacao, ou quando o titular nao for a parte.
-
-Regras de coerencia que o validador recusa violar: `FATO COMPROVADO` exige documento lido e com localizacao; documento `NAO LIDO` nao entra em `provas`; `INFERENCIA` exige `base_inferencia`; prazo com elemento ausente exige `situacao` pendente e nao pode afirmar `termo_final`; marco com data em `~` sai como `ALEGACAO`; documento nao lido, sem localizacao, de confianca `BAIXA` ou estranho ao caso precisa constar do bloco de pendencia correspondente.
-
-Campo sem base no material fica `?`; nunca preencher por plausibilidade.
+Quando o advogado pedir saida estruturada para planilha, base ou automacao, usar o esquema, os conjuntos fechados e as regras de coerencia de [saida-json.md](saida-json.md). Sem pedido expresso, entregar em texto e tabela.
 
 ## Fechamento
 
@@ -199,4 +132,4 @@ Toda entrega termina com quatro blocos curtos, e bloco vazio se declara vazio:
 - **Confirmar antes de usar**: confianca `BAIXA`, delimitacao `INCERTA`, OCR duvidoso, titular diverso do requerente, e todo numero, data ou valor que va para peca ou calculo.
 - **Estranhos ao caso**: documentos segregados, com o motivo da divergencia.
 
-Fechar o indice com a frase: **nenhuma linha foi conferida na fonte; o indice e roteiro de conferencia.** Declarar tambem o que nao foi coberto: paginas nao lidas, trechos ilegiveis, anexos nao abertos e volumes ausentes. Sem essa declaracao, o indice nao esta entregue.
+Fechar o indice com a frase: **o indice e roteiro de conferencia; declarar o que foi conferido e o que continua pendente.** Declarar tambem o que nao foi coberto: paginas nao lidas, trechos ilegiveis, anexos nao abertos e volumes ausentes. Sem essa declaracao, o indice nao esta entregue.
