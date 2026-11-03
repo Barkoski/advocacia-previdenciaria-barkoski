@@ -12,6 +12,8 @@
 
 # ⚖️ Advocacia Previdenciária Barkoski
 
+> 🧩 **Peça independente.** Use este repositório sozinho ou junto com os outros: [consultor-primeiro](https://github.com/Barkoski/consultor-primeiro) (um fluxo de trabalho com agentes: um forte planeja, os econômicos executam) · [dossie](https://github.com/Barkoski/dossie) (organização de prova em dossiê estruturado e auditável). Cada um nasceu com uma proposta própria.
+
 > 🧠 Skill para **Claude Code, Claude Cowork e Codex** que estrutura análise, estratégia e redação de casos de **Direito Previdenciário brasileiro**, com rastreabilidade documental, matriz requisito-prova-risco e análise adversarial. Nada de resposta genérica de "assistente jurídico".
 
 👨‍⚖️ Construída por [Lucas Barkoski](https://github.com/Barkoski), advogado previdenciarista (OAB/MT 28.362, OAB/PR 135.987), a partir da prática real com processos de INSS, PJe e JEF.
