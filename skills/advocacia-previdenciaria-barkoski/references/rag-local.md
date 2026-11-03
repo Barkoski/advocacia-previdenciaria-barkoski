@@ -14,8 +14,8 @@ Quando o rodape do documento trouxer a propria numeracao (`Pagina X de Y`), conf
 
 Extrair texto de uma amostra de paginas e medir o volume por pagina:
 
-- **Pagina com poucas dezenas de caracteres, repetindo carimbo, ID de anexo, numeracao ou data de emissao**: e pagina de IMAGEM. O conteudo existe e nao foi lido.
-- **Pagina com centenas ou milhares de caracteres**: e nato-digital. O conteudo foi lido.
+- **Pagina com pouco texto ou apenas carimbo**: indicio de conteudo em imagem ou falha de extracao; inspecionar antes de classificar. Pode haver pagina realmente vazia.
+- **Pagina com muito texto extraido**: pode ser nato-digital ou OCR previo. Volume de caracteres nao comprova qualidade nem significa que o agente leu o conteudo.
 
 Registrar essa separacao explicitamente. `AUSENCIA DE TEXTO EXTRAIDO NAO E AUSENCIA DE CONTEUDO` — jamais tratar pagina de imagem como pagina vazia, como documento inexistente ou como prova ausente.
 
@@ -55,7 +55,7 @@ Resultado de busca semantica e candidato de leitura, nunca fonte. Antes de citar
 
 Registrar arquivo de origem, pagina, trecho, data de extracao e qualidade. Isolar casos e clientes por pasta e permissao; nao misturar bases sem autorizacao.
 
-Transcricao gerada por assistente local e leitura de apoio: a fonte citada continua sendo o documento original, pagina X.
+Transcricao local e leitura de apoio: cite a transcricao disponivel e sua atribuicao ao PDF/pagina; so declare conferencia do original quando efetivamente realizada.
 
 Em jurisprudencia recuperada de acervo, aplicar [jurisprudencia.md](jurisprudencia.md) antes de cita-la como atual ou oficial. Em calculo, extrair premissas e usar ferramenta deterministica para o resultado final.
 

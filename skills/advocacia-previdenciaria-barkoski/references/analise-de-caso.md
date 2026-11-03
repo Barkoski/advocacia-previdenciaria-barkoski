@@ -1,6 +1,6 @@
 # Analise de caso
 
-## Fluxo obrigatorio
+## Fluxo para analise completa
 
 1. Delimitar beneficio, via, fase, decisao enfrentada, pergunta central, arquivos, prazo aparente e destino permitido dos dados.
 2. Montar inventario: `ARQUIVO | paginas | tipo | pessoa/NB/processo | legibilidade | utilidade | problema`. Em autos extensos, PDF integral ou copia do PJe, substituir o inventario pelo indice de [identificacao-documental.md](identificacao-documental.md).

@@ -21,3 +21,11 @@ Usar `FATO COMPROVADO`, `ALEGACAO`, `INFERENCIA` ou `CONCLUSAO JURIDICA`. Para a
 Usar: `REQUISITO | PROVA NECESSARIA | FAVORAVEL | CONTRARIA | LACUNA | SITUACAO | RISCO | PROVIDENCIA`.
 
 Nao transformar narrativa em prova, ementa em confirmacao de tese, resultado de busca semantica em fonte, ou documento isolado em cobertura automatica de periodo amplo.
+
+## Precisao de origem e escopo
+
+Separe suporte documental de conferencia: `ORIGINAL CONFERIDO`, `SOMENTE TRANSCRICAO`, `RELATADO NA CONVERSA`, `NAO LIDO`. Leitura de transcricao nao e conferencia do PDF. Registre trecho e localizacao por afirmacao decisiva, paginas examinadas e revisao humana separada. Documento registra primeiro o que seu autor afirmou; nao transforma a narrativa em verdade automaticamente.
+
+Data parcial ou aproximada nao e, por si, alegacao: preserve a precisao literal e avalie a natureza da fonte. Documento de terceiro requer pertinencia e alcance justificados, sem descarte nem extensao automaticos. Ausencia em busca seletiva significa nao localizado no material examinado, nao inexistente.
+
+Se pedida transcricao literal de CNIS/CTPS, preserve cada pagina, linha, indicador e competencia, separando normalizacao de texto original. Nao substitua por resumo. Carencia, tempo e qualidade de segurado sao apuracoes distintas; concomitancias nao autorizam duplicar dias.

@@ -12,6 +12,8 @@ Apresentar primeiro fragilidades e o contra-argumento provavel. Classificar suge
 
 Entregar, quando solicitado: minuta integral revisada; changelog com adicoes, exclusoes e reorganizacoes; e checklist de protocolo.
 
-## Bloqueios de protocolo
+## Bloqueios de recomendacao de protocolo
+
+Esses controles nao impedem entregar minuta com pendencias visiveis. Aprovacao da minuta nao autoriza enviar, assinar ou protocolar.
 
 Bloquear ou recomendar revisao antes de protocolar se houver: dado essencial em aberto; parte/beneficio/numero divergente; placeholder; documento estranho nao segregado; prazo nao confirmado; precedente ou lei nao validado; pedido sem base; calculo nao conferido; valor da causa pendente sem ressalva; contradicao material nao enfrentada; documento indispensavel ausente ou ilegivel.

@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "_nota": "Caso ficticio QUEBRADO DE PROPOSITO. Serve de fixture de regressao: o validador precisa recusar este arquivo. Se algum dia ele passar, o validador perdeu uma trava. Violacoes plantadas descritas em _violacoes_esperadas.",
+  "_violacoes_esperadas": [
+    "F1: fato comprovado apoiado em documento nao lido (D1)",
+    "P1: documento nao lido dentro da tabela de provas",
+    "F2: inferencia sem base_inferencia declarada",
+    "R1: situacao fora do conjunto fechado",
+    "D2: familia documental fora do conjunto fechado",
+    "prazo 1: termo_final afirmado sem termo inicial, forma de ciencia e regra",
+    "decisao_operacional NAO RECORRER sem motivo_decisao",
+    "decisao_paralela repetindo a decisao_operacional",
+    "D1: documento nao lido ausente de pendencias.nao_lidos",
+    "D1: confianca BAIXA ausente de pendencias.confirmar"
+  ],
+  "caso": {
+    "parte": "[PARTE AUTORA]",
+    "cpf": "?",
+    "especie": "41",
+    "nb": "?",
+    "der": "12/03/2024",
+    "processo_ou_protocolo": "?",
+    "fase": "administrativa",
+    "data_referencia": "28/08/2026"
+  },
+  "triagem": {
+    "tipo_procedimento": "processo administrativo",
+    "assunto_principal": "Aposentadoria por idade rural",
+    "questao_central": "Ha inicio de prova material?",
+    "pontos_controvertidos": ["periodo rural"],
+    "fundamento_do_indeferimento": "?",
+    "palavras_chave": ["rural"],
+    "normas_invocadas": [],
+    "origem": "arquivo ficticio"
+  },
+  "documentos": [
+    {
+      "id": "D1",
+      "familia": "PROVA_RURAL",
+      "tipo": "nota fiscal de produtor",
+      "titular": "[PARTE AUTORA]",
+      "evento_inicio": "?",
+      "pagina_inicio": "?",
+      "evento_fim": "?",
+      "pagina_fim": "?",
+      "data": "?",
+      "localizacao": "",
+      "resumo": "documento citado e nunca aberto",
+      "criterio_delimitacao": "nao delimitado",
+      "confianca_identificacao": "BAIXA",
+      "qualidade_da_leitura": "NAO LIDO",
+      "lido": false,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    },
+    {
+      "id": "D2",
+      "familia": "PROVA_LABORAL_PREVIDENCIARIA",
+      "tipo": "CNIS",
+      "titular": "[PARTE AUTORA]",
+      "evento_inicio": "?",
+      "pagina_inicio": "10",
+      "evento_fim": "?",
+      "pagina_fim": "15",
+      "data": "12/03/2024",
+      "localizacao": "p. 10-15",
+      "resumo": "familia fora do conjunto fechado desta skill",
+      "criterio_delimitacao": "cabecalho",
+      "confianca_identificacao": "ALTA",
+      "qualidade_da_leitura": "TEXTO NITIDO",
+      "lido": true,
+      "documento_estranho": false,
+      "motivo_divergencia": ""
+    }
+  ],
+  "fatos": [
+    {
+      "id": "F1",
+      "enunciado": "producao rural comprovada",
+      "data": "2015",
+      "grau": "FATO COMPROVADO",
+      "documentos": ["D1"],
+      "base_inferencia": "",
+      "origem": "?"
+    },
+    {
+      "id": "F2",
+      "enunciado": "a familia vivia da roca",
+      "data": "1990-2015",
+      "grau": "INFERENCIA",
+      "documentos": ["D2"],
+      "base_inferencia": "",
+      "origem": "?"
+    }
+  ],
+  "provas": [
+    { "id": "P1", "documento": "D1", "o_que_prova": "producao rural", "requisito": "R1", "conferir": "SIM" }
+  ],
+  "requisitos": [
+    {
+      "id": "R1",
+      "enunciado": "labor rural",
+      "situacao": "QUASE COMPROVADO",
+      "fatos": ["F1"],
+      "prova_necessaria": "inicio de prova material",
+      "favoravel": "",
+      "contraria": "",
+      "lacuna": "",
+      "risco": "",
+      "providencia": ""
+    }
+  ],
+  "marcos": [
+    { "marco": "DER", "data": "~03/2024", "fonte": "D2", "localizacao": "p. 10", "grau": "FATO COMPROVADO" }
+  ],
+  "normas": [],
+  "prazos": [
+    {
+      "ato": "Recurso ao CRPS",
+      "termo_inicial": "?",
+      "forma_ciencia": "?",
+      "regra_contagem": "?",
+      "termo_final": "30/09/2026",
+      "fonte": "D2",
+      "situacao": "OK"
+    }
+  ],
+  "conclusao": "conclusao qualquer",
+  "decisao_operacional": "NAO RECORRER",
+  "decisao_paralela": "NAO RECORRER",
+  "motivo_decisao": "",
+  "proxima_acao": "nenhuma",
+  "confianca": "baixa",
+  "pendencias": {
+    "nao_lidos": [],
+    "sem_localizacao": [],
+    "confirmar": [],
+    "estranhos_ao_caso": []
+  }
+}

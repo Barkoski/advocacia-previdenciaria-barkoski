@@ -1,0 +1,7 @@
+interface:
+  display_name: "Advocacia Previdenciaria Barkoski"
+  short_description: "Analise previdenciaria rastreavel e adversarial"
+  default_prompt: "Use $advocacia-previdenciaria-barkoski para analisar este caso previdenciario com fontes, riscos e proximas acoes."
+
+policy:
+  allow_implicit_invocation: true

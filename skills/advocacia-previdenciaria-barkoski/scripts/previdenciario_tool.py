@@ -10,10 +10,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
 SCHEMA_VERSION = "1.0"
+
+DOC_ID_PATTERN = re.compile(r"\bD\d+\b")
 
 UNKNOWN = "?"
 NO_LOCATION = "PAGINA NAO IDENTIFICADA"
@@ -56,11 +59,83 @@ PENDING_DEADLINE = "PRAZO PENDENTE DE CONFERENCIA HUMANA"
 PENDENCY_BLOCKS = ("nao_lidos", "sem_localizacao", "confirmar", "estranhos_ao_caso")
 
 
+
+def _shape_errors(data):
+    """Reject malformed JSON fields before semantic checks or queries use them."""
+    if not isinstance(data, dict):
+        return ["a raiz do JSON deve ser um objeto"]
+    errors = []
+    object_keys = ("caso", "triagem", "pendencias")
+    for key in object_keys:
+        if key in data and not isinstance(data[key], dict):
+            errors.append(key + ": deve ser um objeto")
+    collections = (*COLLECTIONS, "arestas", "historico", "normas", "marcos", "prazos")
+    scalar_fields = {
+        "id", "grau", "situacao", "familia", "confianca_identificacao", "qualidade",
+        "qualidade_da_leitura", "estado", "documento", "requisito", "de", "para",
+        "tipo", "localizacao", "estado_conferencia", "enunciado", "origem",
+        "origem_conversa", "base_inferencia",
+    }
+    for key in collections:
+        if key not in data:
+            continue
+        if not isinstance(data[key], list):
+            errors.append(key + ": deve ser uma lista")
+            continue
+        for pos, item in enumerate(data[key]):
+            label = f"{key}[{pos}]"
+            if not isinstance(item, dict):
+                errors.append(label + ": deve ser um objeto")
+                continue
+            for field in scalar_fields:
+                if field in item and not isinstance(item[field], str):
+                    errors.append(label + ": " + field + " deve ser texto")
+            for field in ("lido", "inferida", "documento_estranho"):
+                if field in item and not isinstance(item[field], bool):
+                    errors.append(label + ": " + field + " deve ser booleano")
+            for field in ("documentos", "fatos", "apoia_se"):
+                if field in item and (not isinstance(item[field], list) or any(not isinstance(x, str) or not x.strip() for x in item[field])):
+                    errors.append(label + ": " + field + " deve ser lista de IDs textuais")
+            if "suportes" in item and (not isinstance(item["suportes"], list) or any(not isinstance(x, dict) for x in item["suportes"])):
+                errors.append(label + ": suportes deve ser lista de objetos")
+    for key in ("decisao_operacional", "decisao_paralela"):
+        if key in data and data[key] is not None and not isinstance(data[key], str):
+            errors.append(key + ": deve ser texto")
+    return errors
+
+def _missing(value):
+    return value is None or (isinstance(value, str) and value.strip().upper() in
+        ("", "?", "PAGINA NAO IDENTIFICADA", "NAO INFORMADO", "NÃO INFORMADO"))
+
+def _pending_cites(items, entity_id):
+    for item in items:
+        value = str(item).strip()
+        if value == entity_id or (value.startswith(entity_id) and value[len(entity_id):len(entity_id)+1] in (":", " ", "-", ".", ",", ")", "—")):
+            return True
+    return False
+
+def _conference_checks(index, errors):
+    states = {"ORIGINAL CONFERIDO", "SOMENTE TRANSCRICAO", "RELATADO NA CONVERSA", "NAO LIDO"}
+    for eid, item in index.items():
+        if item.get("_colecao") != "documentos" or "estado_conferencia" not in item:
+            continue
+        state = item["estado_conferencia"]
+        if state not in states:
+            errors.append(eid + ": estado_conferencia invalido")
+        if state == "ORIGINAL CONFERIDO" and (item.get("lido") is not True or _missing(item.get("registro_conferencia")) or _missing(item.get("localizacao"))):
+            errors.append(eid + ": original conferido exige leitura, localizacao e registro_conferencia")
+        if state == "NAO LIDO" and item.get("lido") is not False:
+            errors.append(eid + ": estado_conferencia contradiz lido")
+
+
 def load_json(path: Path) -> dict:
-    with path.open(encoding="utf-8") as handle:
+    with path.open(encoding="utf-8-sig") as handle:
         value = json.load(handle)
     if not isinstance(value, dict):
         raise ValueError("a raiz do JSON deve ser um objeto")
+    shape = _shape_errors(value)
+    if shape:
+        raise ValueError("; ".join(shape))
     return value
 
 
@@ -70,7 +145,7 @@ def _is_blank(value) -> bool:
 
 def _has_location(document: dict) -> bool:
     location = document.get("localizacao")
-    if _is_blank(location):
+    if _missing(location):
         return False
     return str(location).strip() not in (UNKNOWN, NO_LOCATION)
 
@@ -123,6 +198,17 @@ def _validate_documents(index: dict, errors: list, warnings: list) -> None:
             warnings.append(entity_id + ": titular desconhecido")
 
 
+def _unknown_doc_refs(text, documents) -> list:
+    """IDs no formato D<numero> citados em texto livre que nao existem em documentos."""
+    if not isinstance(text, str):
+        return []
+    found = []
+    for ref in DOC_ID_PATTERN.findall(text):
+        if ref not in documents and ref not in found:
+            found.append(ref)
+    return found
+
+
 def _validate_facts(index: dict, errors: list) -> None:
     documents = {k: v for k, v in index.items() if v.get("_colecao") == "documentos"}
     for entity_id, item in index.items():
@@ -140,6 +226,8 @@ def _validate_facts(index: dict, errors: list) -> None:
         for doc_id in doc_ids:
             if doc_id not in documents:
                 errors.append(entity_id + ": documento inexistente: " + str(doc_id))
+            elif documents[doc_id].get("lido") is not True:
+                errors.append(entity_id + ": documento nao lido nao sustenta fato: " + str(doc_id))
         if grade == "FATO COMPROVADO":
             if not doc_ids:
                 errors.append(entity_id + ": fato comprovado sem documento")
@@ -151,10 +239,16 @@ def _validate_facts(index: dict, errors: list) -> None:
                     errors.append(
                         entity_id + ": fato comprovado apoiado em documento nao lido: " + str(doc_id)
                     )
+                elif document.get("qualidade_da_leitura") == "ILEGIVEL":
+                    errors.append(
+                        entity_id + ": fato comprovado apoiado em documento ilegivel: " + str(doc_id)
+                    )
                 elif not _has_location(document):
                     errors.append(
                         entity_id + ": fato comprovado apoiado em documento sem localizacao: " + str(doc_id)
                     )
+        for ref in _unknown_doc_refs(item.get("origem"), documents):
+            errors.append(entity_id + ": origem cita documento inexistente: " + ref)
         if grade == "INFERENCIA" and _is_blank(item.get("base_inferencia")):
             errors.append(entity_id + ": inferencia sem base_inferencia")
 
@@ -192,7 +286,8 @@ def _validate_evidence_table(data: dict, index: dict, errors: list) -> None:
 
 
 def _validate_requirements(index: dict, errors: list) -> None:
-    facts = {k for k, v in index.items() if v.get("_colecao") == "fatos"}
+    fact_items = {k: v for k, v in index.items() if v.get("_colecao") == "fatos"}
+    facts = set(fact_items)
     for entity_id, item in index.items():
         if item.get("_colecao") != "requisitos":
             continue
@@ -202,9 +297,18 @@ def _validate_requirements(index: dict, errors: list) -> None:
         if not isinstance(fact_ids, list):
             errors.append(entity_id + ": fatos deve ser uma lista")
             continue
+        if item.get("situacao") == "COMPROVADO" and not fact_ids:
+            errors.append(entity_id + ": requisito comprovado sem fatos de suporte")
         for fact_id in fact_ids:
             if fact_id not in facts:
                 errors.append(entity_id + ": fato inexistente: " + str(fact_id))
+        existing = [fact_items[f] for f in fact_ids if f in fact_items]
+        if (
+            item.get("situacao") == "COMPROVADO"
+            and existing
+            and all(f.get("grau") == "ALEGACAO" for f in existing)
+        ):
+            errors.append(entity_id + ": requisito comprovado sustentado apenas por fato de natureza ALEGACAO")
 
 
 def _validate_norms(data: dict, errors: list) -> None:
@@ -221,6 +325,8 @@ def _validate_norms(data: dict, errors: list) -> None:
             errors.append(label + ": referencia vazia")
         if norm.get("estado") not in VALID_NORM_STATES:
             errors.append(label + ": estado de conferencia invalido")
+        if norm.get("estado") in ("FONTE OFICIAL CONSULTADA AGORA", "ARQUIVO OFICIAL CAPTURADO") and _missing(norm.get("origem")):
+            errors.append(label + ": consulta oficial exige origem identificada")
 
 
 def _validate_deadlines(data: dict, errors: list) -> None:
@@ -234,17 +340,17 @@ def _validate_deadlines(data: dict, errors: list) -> None:
             errors.append(label + ": formato invalido")
             continue
         incomplete = any(
-            _is_blank(deadline.get(field)) or deadline.get(field) == UNKNOWN
-            for field in ("termo_inicial", "forma_ciencia", "regra_contagem")
+            _missing(deadline.get(field))
+            for field in ("ato", "termo_inicial", "forma_ciencia", "regra_contagem", "fonte")
         )
         if incomplete:
             if deadline.get("situacao") != PENDING_DEADLINE:
                 errors.append(label + ": elemento ausente exige situacao " + PENDING_DEADLINE)
-            if not _is_blank(deadline.get("termo_final")) and deadline.get("termo_final") != UNKNOWN:
+            if not _missing(deadline.get("termo_final")):
                 errors.append(label + ": termo_final afirmado sem elementos confirmados")
 
 
-def _validate_marks(data: dict, errors: list) -> None:
+def _validate_marks(data: dict, index: dict, errors: list) -> None:
     marks = data.get("marcos", [])
     if not isinstance(marks, list):
         errors.append("marcos: deve ser uma lista")
@@ -258,9 +364,32 @@ def _validate_marks(data: dict, errors: list) -> None:
             errors.append(label + ": nome do marco vazio")
         if mark.get("grau") not in VALID_FACT_GRADES:
             errors.append(label + ": grau invalido")
-        date = str(mark.get("data", ""))
-        if date.startswith("~") and mark.get("grau") != "ALEGACAO":
-            errors.append(label + ": data aproximada exige grau ALEGACAO")
+        documents = {k: v for k, v in index.items() if v.get("_colecao") == "documentos"}
+        for ref in _unknown_doc_refs(mark.get("fonte"), documents):
+            errors.append(label + ": fonte cita documento inexistente: " + ref)
+        # Precisao temporal nao determina natureza probatoria.
+        if mark.get("grau") == "FATO COMPROVADO" and (_missing(mark.get("fonte")) or _missing(mark.get("localizacao"))):
+            errors.append(label + ": marco comprovado exige fonte e localizacao")
+
+
+def _cita_id(entries: list, entity_id: str) -> bool:
+    """O bloco de pendencia cita este documento?
+
+    Os modulos mandam escrever a pendencia com o que dependeria do documento
+    ("D5: bloco de notas; dele dependeria a cobertura de 1991-2014"), e nao so
+    o identificador solto. Exigir igualdade exata faria o validador recusar
+    justamente a entrega mais completa. Aceita-se o ID isolado ou o ID no
+    inicio da linha seguido de pontuacao ou espaco; "D5" nao casa com "D50".
+    """
+    for entry in entries:
+        text = str(entry).strip()
+        if text == entity_id:
+            return True
+        if text.startswith(entity_id):
+            resto = text[len(entity_id):]
+            if resto[:1] in (":", " ", "-", ".", ",", ")", "—"):
+                return True
+    return False
 
 
 def _validate_pendencies(data: dict, index: dict, errors: list) -> None:
@@ -273,24 +402,27 @@ def _validate_pendencies(data: dict, index: dict, errors: list) -> None:
             errors.append("pendencias: bloco ausente ou invalido: " + block)
     if any(not isinstance(pendencies.get(block), list) for block in PENDENCY_BLOCKS):
         return
-    unread = set(pendencies["nao_lidos"])
-    without_location = set(pendencies["sem_localizacao"])
-    to_confirm = set(pendencies["confirmar"])
-    strange = set(pendencies["estranhos_ao_caso"])
+    unread = pendencies["nao_lidos"]
+    without_location = pendencies["sem_localizacao"]
+    to_confirm = pendencies["confirmar"]
+    strange = pendencies["estranhos_ao_caso"]
     for entity_id, item in index.items():
         if item.get("_colecao") != "documentos":
             continue
-        if item.get("lido") is False and entity_id not in unread:
+        if item.get("lido") is False and not _cita_id(unread, entity_id):
             errors.append(entity_id + ": documento nao lido ausente de pendencias.nao_lidos")
-        if item.get("lido") and not _has_location(item) and entity_id not in without_location:
+        if item.get("lido") and not _has_location(item) and not _cita_id(without_location, entity_id):
             errors.append(entity_id + ": documento sem localizacao ausente de pendencias.sem_localizacao")
-        if item.get("confianca_identificacao") == "BAIXA" and entity_id not in to_confirm:
+        if item.get("confianca_identificacao") == "BAIXA" and not _cita_id(to_confirm, entity_id):
             errors.append(entity_id + ": confianca BAIXA ausente de pendencias.confirmar")
-        if item.get("documento_estranho") and entity_id not in strange:
+        if item.get("documento_estranho") and not _cita_id(strange, entity_id):
             errors.append(entity_id + ": documento estranho ausente de pendencias.estranhos_ao_caso")
 
 
 def validate(data: dict) -> "tuple[list, list]":
+    shape = _shape_errors(data)
+    if shape:
+        return shape, []
     errors: list = []
     warnings: list = []
 
@@ -321,6 +453,7 @@ def validate(data: dict) -> "tuple[list, list]":
 
     index, index_errors = index_entities(data)
     errors.extend(index_errors)
+    _conference_checks(index, errors)
 
     _validate_documents(index, errors, warnings)
     _validate_facts(index, errors)
@@ -328,7 +461,7 @@ def validate(data: dict) -> "tuple[list, list]":
     _validate_requirements(index, errors)
     _validate_norms(data, errors)
     _validate_deadlines(data, errors)
-    _validate_marks(data, errors)
+    _validate_marks(data, index, errors)
     _validate_pendencies(data, index, errors)
 
     decision = data.get("decisao_operacional")
@@ -351,7 +484,7 @@ def validate(data: dict) -> "tuple[list, list]":
 DISCLAIMER = (
     "Verificado: estrutura, referencias e travas decidiveis por maquina. "
     "NAO verificado: veracidade do caso, conteudo de pagina, vigencia de norma "
-    "e acerto da delimitacao. Nenhuma linha foi conferida na fonte."
+    "e acerto da delimitacao. O script nao confere linhas na fonte."
 )
 
 
@@ -405,7 +538,7 @@ def command_provas(args: argparse.Namespace) -> int:
                 "CONFERIR=" + str(row.get("conferir", UNKNOWN)),
             ])
         )
-    print("Nenhuma linha foi conferida na fonte. A tabela e roteiro de conferencia.")
+    print("O script nao confere linhas na fonte. A tabela e roteiro de conferencia.")
     return 0
 
 
