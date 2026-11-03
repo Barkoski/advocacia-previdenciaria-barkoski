@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200" role="img" aria-label="Fluxo: autos, rotulagem, tabela de provas, análise adversarial, decisão operacional, minuta">
+  <rect width="900" height="200" rx="16" fill="#f4f1e8"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle" fill="#2f4a5f">
+    <g font-size="26">
+      <text x="75" y="85">📂</text><text x="225" y="85">🏷️</text><text x="375" y="85">🧾</text><text x="525" y="85">⚔️</text><text x="675" y="85">🧭</text><text x="825" y="85">📝</text>
+    </g>
+    <g font-size="15" font-weight="600">
+      <text x="75" y="125">Autos</text><text x="225" y="125">Rotulagem</text><text x="375" y="125">Tabela de provas</text><text x="525" y="125">Análise adversa</text><text x="675" y="125">Decisão</text><text x="825" y="125">Minuta</text>
+    </g>
+    <g font-size="12" fill="#5b7186">
+      <text x="75" y="147">arquivo + página</text><text x="225" y="147">fato / alegação</text><text x="375" y="147">conferir na fonte</text><text x="525" y="147">contra-argumento</text><text x="675" y="147">1 de 10 saídas</text><text x="825" y="147">revisão humana</text>
+    </g>
+  </g>
+  <g stroke="#6aa59a" stroke-width="3" stroke-linecap="round">
+    <line x1="115" y1="75" x2="185" y2="75"/><line x1="265" y1="75" x2="335" y2="75"/><line x1="415" y1="75" x2="485" y2="75"/><line x1="565" y1="75" x2="635" y2="75"/><line x1="715" y1="75" x2="785" y2="75"/>
+  </g>
+</svg>

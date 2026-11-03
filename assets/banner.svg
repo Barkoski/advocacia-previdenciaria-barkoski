@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-label="Advocacia Previdenciária Barkoski: análise de casos com rastreabilidade documental">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f6d8f"/>
+      <stop offset="1" stop-color="#5f9c8f"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="280" rx="20" fill="url(#bg)"/>
+  <text x="450" y="80" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">⚖️ Advocacia Previdenciária</text>
+  <text x="450" y="122" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#eef5f3">Fato, prova e prazo com lastro no documento. Nada inventado.</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2f4a5f" font-weight="600">
+    <rect x="50" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="145" y="195" font-size="28">📄</text><text x="145" y="228">Documento lido</text>
+    <rect x="260" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="355" y="195" font-size="28">🔎</text><text x="355" y="228">Prova conferível</text>
+    <rect x="470" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="565" y="195" font-size="28">🛡️</text><text x="565" y="228">Tese adversa</text>
+    <rect x="680" y="160" width="170" height="86" rx="14" fill="#f4f1e8"/><text x="765" y="195" font-size="28">✍️</text><text x="765" y="228">Minuta</text>
+  </g>
+</svg>

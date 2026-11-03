@@ -9,6 +9,7 @@ A validacao tem duas camadas. A primeira e humana e vale sempre. A segunda e mec
 1. Toda afirmacao factual tem arquivo e pagina, ou rotulo de `ALEGACAO`, `INFERENCIA` ou `CONCLUSAO JURIDICA`.
 2. Nenhum `FATO COMPROVADO` se apoia em documento nao lido ou sem localizacao confirmada.
 3. Documento `NAO LIDO` nao sustenta fato, requisito ou linha da tabela de provas.
+   Requisito so e `COMPROVADO` se TODOS os fatos de suporte forem `FATO COMPROVADO` (documento lido, com localizacao). `ALEGACAO`, `INFERENCIA` ou `CONCLUSAO JURIDICA` entre os fatos de suporte impedem o status; use `PARCIALMENTE COMPROVADO` (o validador recusa).
 4. Inferencia declara de que fatos foi deduzida e nao foi promovida a fato.
 5. Toda lei, sumula, tema ou julgado foi conferido em fonte, ou esta marcado `DE MEMORIA - CONFIRMAR EM FONTE OFICIAL`.
 6. Todo prazo mostra ato, termo inicial, forma de ciencia, regra de contagem e fonte; faltando qualquer elemento, sai `PRAZO PENDENTE DE CONFERENCIA HUMANA`.
