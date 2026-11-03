@@ -302,13 +302,16 @@ def _validate_requirements(index: dict, errors: list) -> None:
         for fact_id in fact_ids:
             if fact_id not in facts:
                 errors.append(entity_id + ": fato inexistente: " + str(fact_id))
-        existing = [fact_items[f] for f in fact_ids if f in fact_items]
-        if (
-            item.get("situacao") == "COMPROVADO"
-            and existing
-            and all(f.get("grau") == "ALEGACAO" for f in existing)
-        ):
-            errors.append(entity_id + ": requisito comprovado sustentado apenas por fato de natureza ALEGACAO")
+        existing = [(f, fact_items[f]) for f in fact_ids if f in fact_items]
+        if item.get("situacao") == "COMPROVADO":
+            # Regra estrita: COMPROVADO so se TODO fato de suporte for FATO COMPROVADO
+            # (ancorado em documento lido). Alegacao, inferencia ou conclusao nao comprovam.
+            for fact_id, fact in existing:
+                if fact.get("grau") != "FATO COMPROVADO":
+                    errors.append(
+                        entity_id + ": requisito comprovado exige somente FATO COMPROVADO documental; "
+                        + fact_id + " e " + str(fact.get("grau"))
+                    )
 
 
 def _validate_norms(data: dict, errors: list) -> None:

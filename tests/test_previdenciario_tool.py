@@ -251,13 +251,21 @@ class AuditFindingsTest(unittest.TestCase):
         requirement["situacao"] = "COMPROVADO"
         requirement["fatos"] = ["F5"]  # F5 e ALEGACAO
         errors, _ = tool.validate(data)
-        self.assertTrue(any("R1: requisito comprovado sustentado apenas por fato de natureza ALEGACAO" in e for e in errors))
+        self.assertTrue(any("R1: requisito comprovado exige somente FATO COMPROVADO documental; F5" in e for e in errors))
 
-    def test_finding_02_proven_requirement_with_a_proven_fact_is_accepted(self):
+    def test_finding_02_mixing_allegation_with_proven_fact_is_rejected(self):
         data = load_example()
         requirement = find(data, "requisitos", "R1")
         requirement["situacao"] = "COMPROVADO"
-        requirement["fatos"] = ["F2", "F5"]
+        requirement["fatos"] = ["F2", "F5"]  # F5 e ALEGACAO: misturar tambem e proibido
+        errors, _ = tool.validate(data)
+        self.assertTrue(any("R1: requisito comprovado exige somente FATO COMPROVADO documental; F5" in e for e in errors))
+
+    def test_finding_02_proven_requirement_only_with_proven_facts_is_accepted(self):
+        data = load_example()
+        requirement = find(data, "requisitos", "R1")
+        requirement["situacao"] = "COMPROVADO"
+        requirement["fatos"] = ["F2"]
         errors, _ = tool.validate(data)
         self.assertEqual(errors, [])
 
