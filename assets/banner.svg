@@ -1,17 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-label="Advocacia Previdenciária Barkoski: análise de casos com rastreabilidade documental">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4f6d8f"/>
-      <stop offset="1" stop-color="#5f9c8f"/>
-    </linearGradient>
-  </defs>
-  <rect width="900" height="280" rx="20" fill="url(#bg)"/>
-  <text x="450" y="80" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff">⚖️ Advocacia Previdenciária</text>
-  <text x="450" y="122" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#eef5f3">Fato, prova e prazo com lastro no documento. Nada inventado.</text>
-  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#2f4a5f" font-weight="600">
-    <rect x="50" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="145" y="195" font-size="28">📄</text><text x="145" y="228">Documento lido</text>
-    <rect x="260" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="355" y="195" font-size="28">🔎</text><text x="355" y="228">Prova conferível</text>
-    <rect x="470" y="160" width="190" height="86" rx="14" fill="#f4f1e8"/><text x="565" y="195" font-size="28">🛡️</text><text x="565" y="228">Tese adversa</text>
-    <rect x="680" y="160" width="170" height="86" rx="14" fill="#f4f1e8"/><text x="765" y="195" font-size="28">✍️</text><text x="765" y="228">Minuta</text>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-label="Advocacia Previdenciária: Documento, prova e estratégia para a prática previdenciária.">
+<rect width="1200" height="380" rx="24" fill="#f3f1eb"/><path d="M895 0H1176Q1200 0 1200 24V356Q1200 380 1176 380H895Z" fill="#547c88"/>
+<circle cx="1070" cy="105" r="130" fill="none" stroke="#fff" stroke-opacity=".18"/><circle cx="1070" cy="105" r="88" fill="none" stroke="#fff" stroke-opacity=".23"/>
+<path d="M970 260h130m-105 22h105m-80 22h80" stroke="#fff" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="52" y="57" font-size="16" letter-spacing="2.5" font-weight="600" fill="#547c88">SKILL JURÍDICA</text>
+<text x="52" y="127" font-size="43" font-weight="700" fill="#304959">Advocacia Previdenciária</text><text x="52" y="171" font-size="22" fill="#536775">Documento, prova e estratégia para a prática previdenciária.</text>
+<path d="M52 202h770" stroke="#d6dbd5"/><text x="52" y="244" font-size="18" fill="#536775">LUCAS BARKOSKI</text><text x="52" y="275" font-size="18" fill="#536775">Ferramentas para ler, organizar e trabalhar melhor.</text>
+<rect x="52" y="309" width="370" height="35" rx="17" fill="#e4e9e3"/><text x="72" y="332" font-size="16" fill="#3e5c5c">github.com/Barkoski</text><text x="947" y="166" font-size="63" font-weight="600" fill="#fff">B.</text></g></svg>
