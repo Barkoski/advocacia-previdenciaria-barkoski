@@ -1,17 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200" role="img" aria-label="Fluxo: autos, rotulagem, tabela de provas, análise adversarial, decisão operacional, minuta">
-  <rect width="900" height="200" rx="16" fill="#f4f1e8"/>
-  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle" fill="#2f4a5f">
-    <g font-size="26">
-      <text x="75" y="85">📂</text><text x="225" y="85">🏷️</text><text x="375" y="85">🧾</text><text x="525" y="85">⚔️</text><text x="675" y="85">🧭</text><text x="825" y="85">📝</text>
-    </g>
-    <g font-size="15" font-weight="600">
-      <text x="75" y="125">Autos</text><text x="225" y="125">Rotulagem</text><text x="375" y="125">Tabela de provas</text><text x="525" y="125">Análise adversa</text><text x="675" y="125">Decisão</text><text x="825" y="125">Minuta</text>
-    </g>
-    <g font-size="12" fill="#5b7186">
-      <text x="75" y="147">arquivo + página</text><text x="225" y="147">fato / alegação</text><text x="375" y="147">conferir na fonte</text><text x="525" y="147">contra-argumento</text><text x="675" y="147">1 de 10 saídas</text><text x="825" y="147">revisão humana</text>
-    </g>
-  </g>
-  <g stroke="#6aa59a" stroke-width="3" stroke-linecap="round">
-    <line x1="115" y1="75" x2="185" y2="75"/><line x1="265" y1="75" x2="335" y2="75"/><line x1="415" y1="75" x2="485" y2="75"/><line x1="565" y1="75" x2="635" y2="75"/><line x1="715" y1="75" x2="785" y2="75"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="210" viewBox="0 0 1200 210" role="img" aria-label="Ler os autos → Mapear provas → Testar a tese → Revisar a minuta"><rect width="1200" height="210" rx="20" fill="#f3f1eb"/><g font-family="Segoe UI,Arial,sans-serif"><text x="32" y="38" font-size="17" fill="#536775" font-weight="600">COMO O TRABALHO AVANÇA</text><rect x="32" y="62" width="260" height="115" rx="14" fill="#fff" stroke="#d7ded7"/><circle cx="60" cy="91" r="15" fill="#547c88"/><text x="60" y="97" text-anchor="middle" font-size="16" fill="#fff">1</text><text x="50" y="143" font-size="20" font-weight="600" fill="#304959">Ler os autos</text><path d="M299 120h16m-5-5 5 5-5 5" fill="none" stroke="#547c88" stroke-width="2"/><rect x="324" y="62" width="260" height="115" rx="14" fill="#fff" stroke="#d7ded7"/><circle cx="352" cy="91" r="15" fill="#547c88"/><text x="352" y="97" text-anchor="middle" font-size="16" fill="#fff">2</text><text x="342" y="143" font-size="20" font-weight="600" fill="#304959">Mapear provas</text><path d="M591 120h16m-5-5 5 5-5 5" fill="none" stroke="#547c88" stroke-width="2"/><rect x="616" y="62" width="260" height="115" rx="14" fill="#fff" stroke="#d7ded7"/><circle cx="644" cy="91" r="15" fill="#547c88"/><text x="644" y="97" text-anchor="middle" font-size="16" fill="#fff">3</text><text x="634" y="143" font-size="20" font-weight="600" fill="#304959">Testar a tese</text><path d="M883 120h16m-5-5 5 5-5 5" fill="none" stroke="#547c88" stroke-width="2"/><rect x="908" y="62" width="260" height="115" rx="14" fill="#fff" stroke="#d7ded7"/><circle cx="936" cy="91" r="15" fill="#547c88"/><text x="936" y="97" text-anchor="middle" font-size="16" fill="#fff">4</text><text x="926" y="143" font-size="20" font-weight="600" fill="#304959">Revisar a minuta</text></g></svg>
