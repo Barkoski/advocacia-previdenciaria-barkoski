@@ -13,7 +13,7 @@ Dois casos ficticios. Nenhum dado real, nenhum cliente.
 python skills/advocacia-previdenciaria-barkoski/scripts/previdenciario_tool.py validate examples/caso-ficticio.json && python skills/advocacia-previdenciaria-barkoski/scripts/previdenciario_tool.py validate examples/caso-invalido.json; echo "o segundo comando DEVE falhar"
 ```
 
-O primeiro tem de sair com codigo 0; o segundo, com codigo 1. Se o `caso-invalido.json` passar, o validador perdeu uma trava — corrigir o validador, nao o exemplo.
+O primeiro tem de sair com codigo 0; o segundo, com codigo 1. Se o `caso-invalido.json` passar, o validador perdeu uma trava, corrigir o validador, nao o exemplo.
 
 ## O que o caso ficticio exercita
 

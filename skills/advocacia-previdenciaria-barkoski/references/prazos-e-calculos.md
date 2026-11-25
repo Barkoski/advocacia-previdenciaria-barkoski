@@ -16,7 +16,7 @@ Sem calendario ou marco confirmados, entregar premissas e roteiro ou calculo con
 
 ## Marcos previdenciarios que exigem conferencia antes de contar
 
-Nenhum item abaixo pode ser afirmado de memoria. Confirmar na norma vigente e citar a fonte consultada; sem consulta, rotular `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` e entregar o roteiro de conferencia em vez da data.
+Nenhum item abaixo pode ser afirmado de memoria. Confirmar na norma vigente e citar a fonte consultada; sem consulta, rotular `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL` e entregar o roteiro de conferencia em vez da data.
 
 | Marco | O que conferir antes |
 |---|---|

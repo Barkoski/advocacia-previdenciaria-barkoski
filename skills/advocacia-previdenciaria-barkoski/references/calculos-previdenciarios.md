@@ -23,7 +23,7 @@ Exigir apenas parametros que alterem o calculo pedido. Lacuna impede valor defin
 
 ## 2. Parametros que nao podem ser afirmados de memoria
 
-Cada linha abaixo e ponto de conferencia obrigatorio em fonte oficial. Sem consulta, rotular `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` e entregar o roteiro no lugar do valor.
+Cada linha abaixo e ponto de conferencia obrigatorio em fonte oficial. Sem consulta, rotular `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL` e entregar o roteiro no lugar do valor.
 
 | Parametro | O que conferir |
 |---|---|

@@ -87,11 +87,11 @@ Julgado do acervo e fotografia da data em que entrou no acervo. Antes de trata-l
 
 Sem essa verificacao, o julgado entra como `ACERVO LOCALIZADOR`: localiza o entendimento, nao atesta vigencia. Marcar o estado do que foi usado:
 
-- `FONTE OFICIAL CONSULTADA AGORA` — inteiro teor ou pagina oficial aberta neste trabalho.
-- `ARQUIVO OFICIAL CAPTURADO` — arquivo oficial anexado, com orgao e data; confirma o conteudo capturado, nao o que veio depois.
-- `ACERVO LOCALIZADOR` — acervo do escritorio, boletim, ementario, PDF baixado.
-- `PESQUISA OFICIAL PENDENTE` — nao havia material suficiente para ler.
-- `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` — nao lido neste trabalho; nesse estado nao vai para peca.
+- `FONTE OFICIAL CONSULTADA AGORA`: inteiro teor ou pagina oficial aberta neste trabalho.
+- `ARQUIVO OFICIAL CAPTURADO`: arquivo oficial anexado, com orgao e data; confirma o conteudo capturado, nao o que veio depois.
+- `ACERVO LOCALIZADOR`: acervo do escritorio, boletim, ementario, PDF baixado.
+- `PESQUISA OFICIAL PENDENTE`: nao havia material suficiente para ler.
+- `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL`: nao lido neste trabalho; nesse estado nao vai para peca.
 
 ## 7. Legislacao
 

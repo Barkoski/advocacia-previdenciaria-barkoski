@@ -19,7 +19,7 @@ Traduz as travas do SKILL.md em regras de uso das ferramentas disponiveis em Cla
 Fontes locais que costumam existir na maquina (confirmar caminho e conteudo atual antes de afirmar que foram usadas; caminho e nome variam por escritorio, ajustar aos seus):
 
 - Assistente local de OCR/RAG do escritorio, quando existir: gera relatorios `.md` por PDF a partir de indexacao local. Fluxo recomendado: o assistente local faz o trabalho bruto (OCR, indexacao) e os `.md` de transcricao entram aqui como fonte dos fatos. Transcricao assistida e leitura de apoio, nao prova; a fonte continua sendo o PDF, pagina X.
-- Acervo local de jurisprudencia (boletins, ementarios, PDFs baixados), quando existir: serve como `ACERVO LOCALIZADOR` na regra de [jurisprudencia.md](jurisprudencia.md) — localiza julgado, nao confirma vigencia, integra ou status atual. Ao citar, dar a fonte local e a pagina para conferencia.
+- Acervo local de jurisprudencia (boletins, ementarios, PDFs baixados), quando existir: serve como `ACERVO LOCALIZADOR` na regra de [jurisprudencia.md](jurisprudencia.md), localiza julgado, nao confirma vigencia, integra ou status atual. Ao citar, dar a fonte local e a pagina para conferencia.
 
 Aplicar [rag-local.md](rag-local.md) sempre que a origem for RAG, OCR ou busca semantica.
 
@@ -27,7 +27,7 @@ Aplicar [rag-local.md](rag-local.md) sempre que a origem for RAG, OCR ou busca s
 
 A distincao que decide o caso concreto e entre **ler** e **enviar**:
 
-- **Ler** material que ja esta no armazenamento do proprio escritorio — pasta local, Drive do escritorio, conector de arquivos ja autorizado pelo advogado — e leitura de acervo proprio: permitido para trabalhar o caso, mantido o isolamento por cliente.
+- **Ler** material que ja esta no armazenamento do proprio escritorio, pasta local, Drive do escritorio, conector de arquivos ja autorizado pelo advogado, e leitura de acervo proprio: permitido para trabalhar o caso, mantido o isolamento por cliente.
 - **Enviar** exige autorizacao expressa nesta conversa: trecho dos autos, identificador do cliente ou estrategia do caso em pesquisa web, e-mail, mensagem, upload para terceiro, compartilhamento de link, publicacao, ou qualquer IA e servico fora do controle do escritorio.
 
 - `WebSearch`, `WebFetch`, navegador e MCP externos sao `EXTERNO`. Classificar antes de usar, conforme [privacidade-e-sigilo.md](privacidade-e-sigilo.md).
@@ -44,7 +44,7 @@ A distincao que decide o caso concreto e entre **ler** e **enviar**:
 ## Entrega
 
 - Analise, diagnostico e revisao: responder no chat.
-- Minuta de peca: escrever em arquivo `.md` ou `.docx` quando o advogado pedir arquivo, usando a ferramenta documental efetivamente disponivel, e informar caminho. Toda minuta sai rotulada como minuta para revisao integral, com os pontos pendentes marcados em `[ ]` no proprio texto — placeholder visivel, nunca dado inventado.
+- Minuta de peca: escrever em arquivo `.md` ou `.docx` quando o advogado pedir arquivo, usando a ferramenta documental efetivamente disponivel, e informar caminho. Toda minuta sai rotulada como minuta para revisao integral, com os pontos pendentes marcados em `[ ]` no proprio texto, placeholder visivel, nunca dado inventado.
 - Nao criar, mover ou apagar arquivo em pasta de caso sem pedido expresso. Rascunho e teste vao para o scratchpad da sessao.
 - Nao acionar subagente (`Agent`) por conta propria. Analise de autos exige a cadeia de citacao que se perde no resumo do subagente.
 
@@ -54,7 +54,7 @@ A distincao que decide o caso concreto e entre **ler** e **enviar**:
 2. Ficou declarado quais faixas foram lidas, quais sao imagem nao lida, e o que depende delas?
 3. Toda afirmacao factual tem arquivo e pagina, ou rotulo de `ALEGACAO`/`INFERENCIA`?
 4. A tabela de provas traz conteudo concreto, titular e coluna de conferencia preenchida?
-5. Toda lei, sumula, tema ou julgado citado foi conferido em fonte, ou esta marcado `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`?
+5. Toda lei, sumula, tema ou julgado citado foi conferido em fonte, ou esta marcado `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL`?
 6. Todo prazo mostra termo inicial, regra e fonte?
 7. Os documentos internos do INSS foram confrontados entre si?
 8. Nenhum dado de cliente saiu para servico externo sem autorizacao expressa nesta conversa?

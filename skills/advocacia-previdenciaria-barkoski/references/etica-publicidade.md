@@ -21,7 +21,7 @@ Citar dispositivo apenas com certeza. Na duvida, descrever a regra pelo conteudo
 inciso, provimento ou ementa do Tribunal de Etica. Fechar todo parecer com a ressalva
 de conferir a redacao vigente no site do Conselho Federal e as regras da seccional,
 que podem ser mais restritivas e mudam sem aviso. Rotular como
-`DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` o que nao tiver sido consultado.
+`DE MEMORIA, CONFIRMAR EM FONTE OFICIAL` o que nao tiver sido consultado.
 
 ## Teste de cinco perguntas
 

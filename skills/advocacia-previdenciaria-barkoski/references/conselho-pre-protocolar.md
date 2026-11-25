@@ -15,6 +15,6 @@ Usar antes de recomendar protocolo. E revisao adversarial estruturada, nao garan
 
 Entregar: achados criticos; correcoes necessarias; reforcos recomendaveis; pontos dependentes de validacao humana; contra-argumento mais forte; e decisao `PROTOCOLAR`, `REVISAR ANTES`, `DILIGENCIAR ANTES`, `REFORMULAR TESE` ou `NAO PROTOCOLAR NO ESTADO ATUAL`.
 
-Estas cinco decisoes respondem a uma pergunta especifica: esta peca, como esta, pode ser protocolada. Nao substituem a decisao operacional do SKILL.md, que responde outra pergunta — qual a rota do caso. Analise completa que termine em protocolo traz as duas: a rota e a aptidao da peca.
+Estas cinco decisoes respondem a uma pergunta especifica: esta peca, como esta, pode ser protocolada. Nao substituem a decisao operacional do SKILL.md, que responde outra pergunta, qual a rota do caso. Analise completa que termine em protocolo traz as duas: a rota e a aptidao da peca.
 
 Qualquer falha critica bloqueia o protocolo por si so. Se o advogado usar nota ou score interno para priorizar, explicitar os criterios e nunca apresentar a media como probabilidade de exito.

@@ -10,7 +10,7 @@ A peca e escrita para ser compreendida e decidida por juiz federal ou relator de
 
 ## 2. Linguagem
 
-Preferir voz ativa, ordem direta, periodo de extensao moderada, verbo concreto, terminologia previdenciaria precisa e narrativa cronologica quando o tempo importar — e no previdenciario ele quase sempre importa.
+Preferir voz ativa, ordem direta, periodo de extensao moderada, verbo concreto, terminologia previdenciaria precisa e narrativa cronologica quando o tempo importar, e no previdenciario ele quase sempre importa.
 
 Evitar, salvo necessidade real: adjetivacao emocional; formula cerimonial; latinismo dispensavel; repeticao de "Excelencia"; metafora; afirmacao absoluta sem suporte; transcricao extensa de lei ou ementa; jurisprudencia decorativa; e apelo a hipossuficiencia como substituto de prova.
 
@@ -59,7 +59,7 @@ Preferir:
 
 Citar dispositivo especifico e explicar como incide no fato. Nao transcrever artigo inteiro sem necessidade de literalidade. Nao substituir argumento por sequencia de artigos.
 
-Direito previdenciario tem incidencia temporal densa: EC 103/2019, regras de transicao, redacao anterior da Lei 8.213/1991, Decreto 3.048/1999 e suas alteracoes, IN do INSS vigente a epoca. Antes de afirmar qual regra rege o caso, identificar a data do fato ou da DER e conferir a redacao vigente naquele momento em fonte oficial. Sem conferencia, marcar `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` e nao deixar a afirmacao entrar na peca sem o alerta.
+Direito previdenciario tem incidencia temporal densa: EC 103/2019, regras de transicao, redacao anterior da Lei 8.213/1991, Decreto 3.048/1999 e suas alteracoes, IN do INSS vigente a epoca. Antes de afirmar qual regra rege o caso, identificar a data do fato ou da DER e conferir a redacao vigente naquele momento em fonte oficial. Sem conferencia, marcar `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL` e nao deixar a afirmacao entrar na peca sem o alerta.
 
 ## 7. Jurisprudencia
 
@@ -68,7 +68,7 @@ Seguir [jurisprudencia.md](jurisprudencia.md). Na redacao:
 - usar apenas precedente confirmado em fonte oficial;
 - priorizar autoridade, vinculacao e aderencia a questao concreta; nao adotar ordem fixa STJ/STF/TNU/TRF;
 - explicar por que o precedente se aplica a estes fatos, em vez de empilhar ementas;
-- quando houver precedente contrario relevante — e no previdenciario costuma haver —, aplicar, distinguir ou reconhecer o risco; nunca ignorar.
+- quando houver precedente contrario relevante, e no previdenciario costuma haver, aplicar, distinguir ou reconhecer o risco; nunca ignorar.
 
 Citacao apoia argumento ja construido. Nao funciona como argumento autonomo.
 
@@ -94,7 +94,7 @@ Demonstrar de forma concreta a probabilidade do direito, a prova que a sustenta,
 
 ## 11. Recursos
 
-A peca recursal identifica a decisao recorrida, delimita os capitulos impugnados, ataca os fundamentos efetivos da decisao e evita repetir a inicial. Ver [analise-de-decisao.md](analise-de-decisao.md) antes de redigir. Quando o fundamento decisorio for o laudo pericial, atacar o laudo — quesito nao respondido, contradicao com exame, ausencia de avaliacao da atividade habitual — e nao apenas repetir a narrativa da doenca.
+A peca recursal identifica a decisao recorrida, delimita os capitulos impugnados, ataca os fundamentos efetivos da decisao e evita repetir a inicial. Ver [analise-de-decisao.md](analise-de-decisao.md) antes de redigir. Quando o fundamento decisorio for o laudo pericial, atacar o laudo, quesito nao respondido, contradicao com exame, ausencia de avaliacao da atividade habitual, e nao apenas repetir a narrativa da doenca.
 
 ## 12. Fechamento
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Advocacia Previdenciária — Documento, prova e estratégia para a prática previdenciária." width="100%">
+  <img src="assets/banner.svg" alt="Advocacia Previdenciária: Documento, prova e estratégia para a prática previdenciária." width="100%">
 </p>
 
 <p align="center">
@@ -50,7 +50,7 @@ Criado por **[Lucas Barkoski](https://github.com/Barkoski)**.
 |---|---|
 | Citar arquivo e página (ou evento) de cada afirmação | Resposta sem lastro no documento |
 | Requisito só fica `COMPROVADO` se **todos** os fatos de suporte forem `FATO COMPROVADO` em documento lido | Aprovar requisito por narrativa |
-| Lei ou julgado não conferido em fonte oficial sai como `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL` | Citação inventada ou desatualizada |
+| Lei ou julgado não conferido em fonte oficial sai como `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL` | Citação inventada ou desatualizada |
 | Sem marco inicial e regra confirmados, o prazo sai como `PRAZO PENDENTE DE CONFERENCIA HUMANA` | Data final sem base |
 | Conferir a paginação real do arquivo; página sem texto extraído é página não lida, não página vazia | Citar página errada ou ignorar prova digitalizada |
 | Mostrar prova contrária, contradições e tese adversa antes da conclusão | Análise de um lado só |
@@ -61,7 +61,7 @@ Criado por **[Lucas Barkoski](https://github.com/Barkoski)**.
 
 | # | Documento | Conteúdo concreto | Data | Titular | Página | Qualidade | O que prova | Conferir |
 |---|---|---|---|---|---|---|---|---|
-| 2 | Nota fiscal de agropecuária | Compra de 10 parafusos e 2 kg de arame | 14/08/2012 | Requerente | p. 10 | OCR DUVIDOSO — data pode ser 14/06 | Insumo compatível com manejo rural | SIM |
+| 2 | Nota fiscal de agropecuária | Compra de 10 parafusos e 2 kg de arame | 14/08/2012 | Requerente | p. 10 | OCR DUVIDOSO, data pode ser 14/06 | Insumo compatível com manejo rural | SIM |
 
 "Documento comprobatório de atividade rural" não serve como preenchimento: não permite conferir nada. Página digitalizada, número usado em cálculo, titular diferente do requerente ou leitura duvidosa sempre recebem `SIM` em **Conferir**.
 
@@ -74,7 +74,7 @@ Resumo, identidade do caso, limites de leitura, cronologia, tabela de provas, ma
 <a id="instalacao"></a>
 ## 📦 Instalação
 
-### 🟢 Claude Code — pelo marketplace (recomendado)
+### 🟢 Claude Code: pelo marketplace (recomendado)
 
 ```text
 /plugin marketplace add Barkoski/advocacia-previdenciaria-barkoski
@@ -88,7 +88,7 @@ Para atualizar depois:
 /plugin update advocacia-previdenciaria-barkoski@barkoski-skills
 ```
 
-### 🖱️ Claude Code — sem terminal
+### 🖱️ Claude Code: sem terminal
 
 1. Clique em **Code → Download ZIP** no topo desta página e extraia.
 2. Abra a pasta do seu usuário (`C:\Users\SEU_USUARIO` no Windows, `~` no Mac/Linux) e entre em `.claude\skills`. Se `.claude` não aparecer, ative "itens ocultos". Se `skills` não existir, crie.
@@ -97,7 +97,7 @@ Para atualizar depois:
 
 O arquivo deve ficar em `C:\Users\SEU_USUARIO\.claude\skills\advocacia-previdenciaria-barkoski\SKILL.md`.
 
-### 💻 Claude Code — com terminal
+### 💻 Claude Code: com terminal
 
 ```bash
 git clone https://github.com/Barkoski/advocacia-previdenciaria-barkoski.git
@@ -231,6 +231,6 @@ skills/advocacia-previdenciaria-barkoski/
 
 ## 👤 Autor e licença
 
-Criado por **Lucas Barkoski** — [github.com/Barkoski](https://github.com/Barkoski). Publicado no catálogo `barkoski-skills`.
+Criado por **Lucas Barkoski**, [github.com/Barkoski](https://github.com/Barkoski). Publicado no catálogo `barkoski-skills`.
 
-Licença MIT — veja [LICENSE](LICENSE). O conteúdo jurídico reflete a prática de um escritório específico; adapte antes de usar em outro contexto.
+Licença MIT, veja [LICENSE](LICENSE). O conteúdo jurídico reflete a prática de um escritório específico; adapte antes de usar em outro contexto.

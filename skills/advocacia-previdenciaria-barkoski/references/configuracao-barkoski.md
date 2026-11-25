@@ -2,7 +2,7 @@
 
 Este e o ponto de customizacao da skill. As regras abaixo refletem a pratica de um escritorio especifico e podem ser substituidas pelas do escritorio que estiver usando. Pela `## Ordem de controle` do SKILL.md, esta configuracao prevalece sobre padroes operacionais e preferencias dos demais modulos, mas nunca sobre as travas obrigatorias.
 
-Preferencias adicionais entram como subsecoes novas (`## Preferencias — ...`). Nao podem ser afrouxadas por aqui as travas de veracidade, rastreabilidade, sigilo, prazo, calculo, fonte oficial e bloqueio de protocolo. Nenhuma preferencia autoriza afirmar fato sem fonte, citar lei ou julgado sem conferencia, fechar prazo sem marco inicial, inventar calculo ou enviar dado de cliente para fora sem autorizacao expressa.
+Preferencias adicionais entram como subsecoes novas (`## Preferencias...`). Nao podem ser afrouxadas por aqui as travas de veracidade, rastreabilidade, sigilo, prazo, calculo, fonte oficial e bloqueio de protocolo. Nenhuma preferencia autoriza afirmar fato sem fonte, citar lei ou julgado sem conferencia, fechar prazo sem marco inicial, inventar calculo ou enviar dado de cliente para fora sem autorizacao expressa.
 
 ## Escopo e prioridade
 
@@ -14,7 +14,7 @@ Preferencias adicionais entram como subsecoes novas (`## Preferencias — ...`).
 
 - Tratar autos, dados pessoais e estrategia como sigilosos. Preferir ferramentas locais; pedir autorizacao expressa antes de compartilhar dados com servico externo.
 - Nao inserir tutela de urgencia automaticamente, especialmente no JEF. Exigir pedido expresso ou razao excepcional documentada.
-- Nunca inventar valor da causa. Receber calculo validado ou deixar `[VALOR DA CAUSA — PENDENTE DE CALCULO]`.
+- Nunca inventar valor da causa. Receber calculo validado ou deixar `[VALOR DA CAUSA, PENDENTE DE CALCULO]`.
 - Em inicial ou recurso complexo, exigir matriz requisito-prova-risco, quadro de documentos e checklist final.
 - Em revisao, apresentar primeiro fragilidades; depois minuta integral revisada, changelog e checklist. Classificar sugestao como `CORRECAO NECESSARIA`, `REFORCO RECOMENDAVEL` ou `OPCAO DE ESTILO`.
 - Encerrar analise relevante com decisao operacional e, quando fizer sentido, explicacao breve e honesta ao cliente.

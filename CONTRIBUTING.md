@@ -2,7 +2,7 @@
 
 Obrigado pelo interesse. Este repositório é uma skill: texto e instruções, mais um validador em Python. Não é aplicação, não tem servidor e não guarda dados.
 
-## Regra nº 1 — nunca dados reais
+## Regra nº 1: nunca dados reais
 
 **Não inclua dados de caso real em lugar nenhum: issue, pull request, exemplo, teste, captura de tela ou mensagem de commit.**
 
@@ -54,7 +54,7 @@ python -m unittest discover -s tests -v
 python skills/advocacia-previdenciaria-barkoski/scripts/previdenciario_tool.py validate examples/caso-ficticio.json
 ```
 
-O CI roda os dois em Python 3.9 e 3.13. **Trava nova precisa de teste que a proteja** — um teste que quebre a regra deliberadamente e exija recusa. É o teste que define a trava, não a frase em prosa.
+O CI roda os dois em Python 3.9 e 3.13. **Trava nova precisa de teste que a proteja**, um teste que quebre a regra deliberadamente e exija recusa. É o teste que define a trava, não a frase em prosa.
 
 ## Commits e PRs
 

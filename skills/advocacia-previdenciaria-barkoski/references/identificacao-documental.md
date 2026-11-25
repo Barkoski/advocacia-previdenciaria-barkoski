@@ -92,7 +92,7 @@ Preencher apenas com o material do caso:
 - `pontos_controvertidos`: divergencias efetivamente presentes no material.
 - `fundamento_do_indeferimento`: motivo real dado pelo INSS, transcrito na forma em que aparece; `?` se a decisao nao foi lida.
 - `palavras_chave`: termos que descrevem fatos, beneficio e entidades. Nao inserir nome de pessoa. Nao usar nome de peca nem referencia a norma.
-- `normas_invocadas`: somente normas e precedentes citados no material, em forma compacta, com o artigo apos virgula: `L 8.213/1991, Art. 42`; `EC 103/2019, Art. 19`; `Sumula 77 TNU`; `Tema 1.007 STJ`. Norma trazida de memoria vai com `DE MEMORIA — CONFIRMAR EM FONTE OFICIAL`.
+- `normas_invocadas`: somente normas e precedentes citados no material, em forma compacta, com o artigo apos virgula: `L 8.213/1991, Art. 42`; `EC 103/2019, Art. 19`; `Sumula 77 TNU`; `Tema 1.007 STJ`. Norma trazida de memoria vai com `DE MEMORIA, CONFIRMAR EM FONTE OFICIAL`.
 - `origem`: arquivo, evento ou intervalo de paginas que sustenta a triagem.
 
 Nao declarar conhecimento juridico atualizado, nao completar norma de memoria e nao converter classificacao documental em conclusao sobre o merito.

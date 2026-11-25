@@ -4,7 +4,7 @@ Aplicar antes de apresentar analise de autos, indice documental, tabela de prova
 
 A validacao tem duas camadas. A primeira e humana e vale sempre. A segunda e mecanica, opcional, e so alcanca o que estiver estruturado em JSON.
 
-## Camada 1 — conferencia humana
+## Camada 1: conferencia humana
 
 1. Toda afirmacao factual tem arquivo e pagina, ou rotulo de `ALEGACAO`, `INFERENCIA` ou `CONCLUSAO JURIDICA`.
 2. Nenhum `FATO COMPROVADO` se apoia em documento nao lido ou sem localizacao confirmada.
@@ -22,7 +22,7 @@ A validacao tem duas camadas. A primeira e humana e vale sempre. A segunda e mec
 
 Falhou algum item: corrigir e repetir a lista. Nao chamar a entrega de completa enquanto houver falha.
 
-## Camada 2 — validador
+## Camada 2: validador
 
 Quando o caso estiver estruturado conforme o JSON de [saida-json.md](saida-json.md) e houver Python disponivel:
 

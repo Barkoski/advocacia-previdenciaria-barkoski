@@ -17,7 +17,7 @@ Extrair texto de uma amostra de paginas e medir o volume por pagina:
 - **Pagina com pouco texto ou apenas carimbo**: indicio de conteudo em imagem ou falha de extracao; inspecionar antes de classificar. Pode haver pagina realmente vazia.
 - **Pagina com muito texto extraido**: pode ser nato-digital ou OCR previo. Volume de caracteres nao comprova qualidade nem significa que o agente leu o conteudo.
 
-Registrar essa separacao explicitamente. `AUSENCIA DE TEXTO EXTRAIDO NAO E AUSENCIA DE CONTEUDO` — jamais tratar pagina de imagem como pagina vazia, como documento inexistente ou como prova ausente.
+Registrar essa separacao explicitamente. `AUSENCIA DE TEXTO EXTRAIDO NAO E AUSENCIA DE CONTEUDO`, jamais tratar pagina de imagem como pagina vazia, como documento inexistente ou como prova ausente.
 
 Um mesmo PDF costuma ter os dois tipos: peticoes, despachos, telas de sistema e extratos de CNIS costumam ter texto; documentos do segurado (CTPS, notas fiscais, certidoes, laudos, fotos) costumam ser imagem.
 

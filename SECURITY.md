@@ -2,7 +2,7 @@
 
 ## O que conta como vulnerabilidade aqui
 
-Este projeto é uma skill jurídica com um validador. Não há servidor, autenticação nem armazenamento de dados. O risco não está em execução remota — está em **fazer um advogado confiar em algo que não se sustenta** ou em **vazar dado de cliente**.
+Este projeto é uma skill jurídica com um validador. Não há servidor, autenticação nem armazenamento de dados. O risco não está em execução remota, está em **fazer um advogado confiar em algo que não se sustenta** ou em **vazar dado de cliente**.
 
 Trate como vulnerabilidade e reporte em privado:
 
@@ -12,7 +12,7 @@ Trate como vulnerabilidade e reporte em privado:
 - **Indução a afirmação sem lastro.** Redação de módulo que faça a skill afirmar fato, página, norma ou prazo sem fonte, ou promover grau de comprovação silenciosamente.
 - **Dado real no repositório.** Se encontrar dado de caso real em qualquer arquivo ou no histórico, reporte em privado, não abra issue pública.
 
-Bug comum de código — mensagem de erro confusa, caso não coberto, incompatibilidade de versão — é issue normal, não precisa de canal privado.
+Bug comum de código, mensagem de erro confusa, caso não coberto, incompatibilidade de versão, é issue normal, não precisa de canal privado.
 
 ## Como reportar
 
